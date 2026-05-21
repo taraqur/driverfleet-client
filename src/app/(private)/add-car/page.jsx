@@ -4,6 +4,7 @@ import { useSession } from '@/lib/auth-client';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const AddCar = () => {
   const { data: session } = useSession();
@@ -62,49 +63,49 @@ const AddCar = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-6 md:px-12 pt-24 pb-12">
-      <div className="mb-10 text-center md:text-left">
-        <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-montserrat)] text-white mb-4">List Your Vehicle</h1>
-        <p className="text-white/60 font-[family-name:var(--font-inter)] text-lg">Join our premium fleet and start earning today.</p>
-      </div>
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 text-center md:text-left">
+        <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-montserrat)] text-black dark:text-white mb-4">List Your Vehicle</h1>
+        <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] text-lg">Join our premium fleet and start earning today.</p>
+      </motion.div>
 
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 }} className="bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
         {/* Decorative background glow */}
         <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#f2ca50]/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="space-y-3">
-              <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Car Name</label>
+              <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Car Name</label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
                 placeholder="e.g. Porsche 911 GT3"
                 required
               />
             </div>
             <div className="space-y-3">
-              <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Daily Rent Price ($)</label>
+              <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Daily Rent Price ($)</label>
               <input
                 type="number"
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
                 placeholder="e.g. 500"
                 required
               />
             </div>
 
             <div className="space-y-3">
-              <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Car Type</label>
+              <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Car Type</label>
               <select
                 name="type"
                 value={formData.type}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
                 required
               >
                 <option value="SUV">SUV</option>
@@ -116,38 +117,38 @@ const AddCar = () => {
             </div>
 
             <div className="space-y-3">
-              <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Seat Capacity</label>
+              <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Seat Capacity</label>
               <input
                 type="number"
                 name="capacity"
                 value={formData.capacity}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
                 placeholder="e.g. 4"
                 required
               />
             </div>
 
             <div className="space-y-3">
-              <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Pickup Location</label>
+              <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Pickup Location</label>
               <input
                 type="text"
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
                 placeholder="e.g. Los Angeles, CA"
                 required
               />
             </div>
 
             <div className="space-y-3">
-              <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Availability Status</label>
+              <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Availability Status</label>
               <select
                 name="availability"
                 value={formData.availability}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+                className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
                 required
               >
                 <option value="Available">Available</option>
@@ -157,26 +158,26 @@ const AddCar = () => {
           </div>
 
           <div className="space-y-3">
-            <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Image URL</label>
+            <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Image URL</label>
             <input
               type="url"
               name="imageUrl"
               value={formData.imageUrl}
               onChange={handleChange}
-              className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
+              className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)]"
               placeholder="https://example.com/car-image.jpg"
               required
             />
           </div>
 
           <div className="space-y-3">
-            <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Description</label>
+            <label className="text-sm font-medium text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)]">Description</label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)] resize-none"
+              className="w-full bg-white dark:bg-black/40 border border-black/10 dark:border-white/10 rounded-2xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#f2ca50]/50 focus:ring-1 focus:ring-[#f2ca50]/50 transition-all font-[family-name:var(--font-inter)] resize-none"
               placeholder="Describe your vehicle's condition, performance, and any special rules..."
               required
             />
@@ -186,14 +187,14 @@ const AddCar = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#f2ca50] disabled:opacity-50 hover:bg-white text-black font-semibold py-4 rounded-2xl transition-all duration-300 font-[family-name:var(--font-inter)] text-lg flex items-center justify-center gap-2 group"
+              className="w-full bg-[#f2ca50] disabled:opacity-50 hover:bg-[#ffe088] text-black font-semibold py-4 rounded-2xl transition-all duration-300 font-[family-name:var(--font-inter)] text-lg flex items-center justify-center gap-2 group"
             >
               {loading ? "Listing..." : "List Vehicle"}
               <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };

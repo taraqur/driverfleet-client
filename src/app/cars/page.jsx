@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const ExploreCars = () => {
   const [cars, setCars] = useState([]);
@@ -52,8 +53,24 @@ const ExploreCars = () => {
     fetchCars(searchTerm, newCategory);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#110e07] pt-20">
+    <div className="min-h-screen bg-white dark:bg-[#110e07] pt-20 transition-colors duration-300">
 
       {/* Hero Section */}
       <div className="relative h-[400px] w-full flex flex-col items-center justify-center overflow-hidden">
@@ -68,18 +85,28 @@ const ExploreCars = () => {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <h1 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
+          >
             Explore Our Fleet
-          </h1>
-          <p className="font-[family-name:var(--font-inter)] text-lg text-white/80 max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-[family-name:var(--font-inter)] text-lg text-white/90 max-w-2xl mx-auto"
+          >
             Precision engineering meets unparalleled luxury. Select your next drive from our curated collection of elite vehicles.
-          </p>
+          </motion.p>
         </div>
       </div>
 
       {/* Search and Filter Bar */}
       <div className="max-w-5xl mx-auto px-6 md:px-12 -mt-8 relative z-20 mb-16">
-        <div className="bg-[#1a1814] border border-white/10 rounded-full p-2 flex flex-col md:flex-row items-center gap-2 shadow-2xl">
+        <div className="bg-white dark:bg-[#1a1814] border border-black/10 dark:border-white/10 rounded-[30px] md:rounded-full p-2 flex flex-col md:flex-row items-center gap-2 shadow-2xl">
           
           {/* Search Input */}
           <div className="flex-1 relative w-full h-full">
@@ -92,35 +119,35 @@ const ExploreCars = () => {
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
               placeholder="Search by car name..."
-              className="w-full bg-transparent border-none py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none font-[family-name:var(--font-inter)] text-[15px]"
+              className="w-full bg-transparent border-none py-3 pl-12 pr-4 text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none font-[family-name:var(--font-inter)] text-[15px]"
             />
           </div>
 
-          <div className="hidden md:block w-px h-8 bg-white/10"></div>
+          <div className="hidden md:block w-px h-8 bg-black/10 dark:bg-white/10"></div>
 
           {/* Category Dropdown */}
           <div className="w-full md:w-56 relative">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-white/40 text-[18px]">tune</span>
+              <span className="material-symbols-outlined text-black/40 dark:text-white/40 text-[18px]">tune</span>
             </div>
             <select
               value={category}
               onChange={handleCategoryChange}
-              className="w-full appearance-none bg-transparent border-none py-3 pl-12 pr-10 text-white/80 focus:outline-none font-[family-name:var(--font-inter)] text-[14px] cursor-pointer"
+              className="w-full appearance-none bg-transparent border-none py-3 pl-12 pr-10 text-black/80 dark:text-white/80 focus:outline-none font-[family-name:var(--font-inter)] text-[14px] cursor-pointer"
             >
               {categories.map(cat => (
-                <option key={cat} value={cat} className="bg-[#1a1814]">{cat === 'All' ? 'All Categories' : cat}</option>
+                <option key={cat} value={cat} className="bg-white dark:bg-[#1a1814] text-black dark:text-white">{cat === 'All' ? 'All Categories' : cat}</option>
               ))}
             </select>
             <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-white/40 text-[18px]">expand_more</span>
+              <span className="material-symbols-outlined text-black/40 dark:text-white/40 text-[18px]">expand_more</span>
             </div>
           </div>
 
           {/* Search Button */}
           <button
             onClick={handleSearch}
-            className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 rounded-full font-bold font-[family-name:var(--font-inter)] text-[14px] hover:bg-white transition-colors duration-300"
+            className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 md:rounded-full rounded-2xl font-bold font-[family-name:var(--font-inter)] text-[14px] hover:bg-[#ffe088] transition-colors duration-300"
           >
             Search
           </button>
@@ -134,10 +161,13 @@ const ExploreCars = () => {
             <div className="w-10 h-10 border-4 border-[#f2ca50]/30 border-t-[#f2ca50] rounded-full animate-spin"></div>
           </div>
         ) : cars.length === 0 ? (
-          <div className="bg-[#1a1814] border border-white/10 rounded-3xl p-16 text-center">
-            <span className="material-symbols-outlined text-6xl text-white/20 mb-4">directions_car</span>
-            <h3 className="text-2xl font-bold text-white mb-2 font-[family-name:var(--font-montserrat)]">No vehicles found</h3>
-            <p className="text-white/60 font-[family-name:var(--font-inter)]">Try adjusting your search criteria or category filter.</p>
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="bg-white dark:bg-[#1a1814] border border-black/10 dark:border-white/10 rounded-3xl p-16 text-center"
+          >
+            <span className="material-symbols-outlined text-6xl text-black/20 dark:text-white/20 mb-4">directions_car</span>
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-2 font-[family-name:var(--font-montserrat)]">No vehicles found</h3>
+            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)]">Try adjusting your search criteria or category filter.</p>
             <button
               onClick={() => {
                 setSearchInput('');
@@ -149,12 +179,17 @@ const ExploreCars = () => {
             >
               Clear Filters
             </button>
-          </div>
+          </motion.div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
               {cars.map((car) => (
-                <div key={car._id} className="group rounded-2xl overflow-hidden bg-[#1a1814] border border-white/5 hover:border-white/10 transition-all duration-300">
+                <motion.div variants={cardVariants} key={car._id} className="group rounded-2xl overflow-hidden bg-white dark:bg-[#1a1814] border border-black/5 dark:border-white/5 hover:border-black/10 dark:hover:border-white/10 shadow-lg dark:shadow-none transition-all duration-300">
                   <div className="relative h-56 overflow-hidden">
                     <img
                       alt={car.name}
@@ -170,8 +205,8 @@ const ExploreCars = () => {
                   <div className="p-6 pb-5">
                     <div className="mb-4 flex justify-between items-start">
                       <div>
-                        <h3 className="font-[family-name:var(--font-inter)] text-[22px] font-bold text-white mb-0.5">{car.name}</h3>
-                        <p className="font-[family-name:var(--font-inter)] text-[13px] text-white/50">{car.type}</p>
+                        <h3 className="font-[family-name:var(--font-inter)] text-[22px] font-bold text-black dark:text-white mb-0.5">{car.name}</h3>
+                        <p className="font-[family-name:var(--font-inter)] text-[13px] text-black/50 dark:text-white/50">{car.type}</p>
                       </div>
                       <div className="flex items-center justify-center">
                         <span className="material-symbols-outlined text-[#f2ca50] text-[20px]">bolt</span>
@@ -180,24 +215,24 @@ const ExploreCars = () => {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-5">
-                      <div className="px-3 py-1 rounded-full bg-[#2a261c] text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
                         Automatic
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-[#2a261c] text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
                         {car.capacity} Seats
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-[#2a261c] text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
                         Gasoline
                       </div>
                     </div>
 
-                    <Link href={`/cars/${car._id}`} className="w-full block text-center py-2.5 bg-transparent rounded-lg border border-white/10 font-[family-name:var(--font-inter)] text-[13px] font-medium text-white hover:bg-white/5 transition-colors duration-300">
+                    <Link href={`/cars/${car._id}`} className="w-full block text-center py-2.5 bg-transparent rounded-lg border border-black/10 dark:border-white/10 font-[family-name:var(--font-inter)] text-[13px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300">
                       View Details
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
 
           </>

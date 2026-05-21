@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useSession, signOut } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import axios from 'axios';
 
 const Navbar = () => {
   const { data: session, isPending } = useSession();
   const user = session?.user;
   const router = useRouter();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Sync JWT for social logins (like Google) where login page logic might be bypassed
@@ -26,13 +27,13 @@ const Navbar = () => {
     } catch (err) {
       console.error("Failed to clear JWT:", err);
     }
-    
+
     try {
       await signOut();
     } catch (err) {
       console.error("Failed to sign out from better-auth:", err);
     }
-    
+
     setIsMobileMenuOpen(false);
     window.location.href = '/login';
   };
@@ -54,11 +55,27 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8 font-[family-name:var(--font-inter)] text-[15px] font-medium">
-          <Link className="text-[#f2ca50] border-b-[3px] border-[#f2ca50] pb-1" href="/">Home</Link>
-          <Link className="text-white/80 hover:text-white transition-colors" href="/cars">Explore Cars</Link>
-          <Link className="text-white/80 hover:text-white transition-colors" href="/add-car">Add Car</Link>
-          <Link className="text-white/80 hover:text-white transition-colors" href="/my-bookings">My Bookings</Link>
+        <div className="hidden md:flex items-center gap-2 font-[family-name:var(--font-inter)] text-[15px] font-medium">
+          <Link 
+            className={`px-4 py-2 rounded-md transition-all duration-300 ${pathname === '/' ? 'bg-[#f2ca50] text-black font-bold shadow-[0_0_10px_rgba(242,202,80,0.3)]' : 'text-white/80 hover:text-white hover:bg-white/10'}`} 
+            href="/">
+            Home
+          </Link>
+          <Link 
+            className={`px-4 py-2 rounded-md transition-all duration-300 ${pathname === '/cars' ? 'bg-[#f2ca50] text-black font-bold shadow-[0_0_10px_rgba(242,202,80,0.3)]' : 'text-white/80 hover:text-white hover:bg-white/10'}`} 
+            href="/cars">
+            Explore Cars
+          </Link>
+          <Link 
+            className={`px-4 py-2 rounded-md transition-all duration-300 ${pathname === '/add-car' ? 'bg-[#f2ca50] text-black font-bold shadow-[0_0_10px_rgba(242,202,80,0.3)]' : 'text-white/80 hover:text-white hover:bg-white/10'}`} 
+            href="/add-car">
+            Add Car
+          </Link>
+          <Link 
+            className={`px-4 py-2 rounded-md transition-all duration-300 ${pathname === '/my-bookings' ? 'bg-[#f2ca50] text-black font-bold shadow-[0_0_10px_rgba(242,202,80,0.3)]' : 'text-white/80 hover:text-white hover:bg-white/10'}`} 
+            href="/my-bookings">
+            My Bookings
+          </Link>
         </div>
 
         {/* Profile Action */}
@@ -121,18 +138,18 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#1a1814] border-b border-white/10 shadow-2xl py-4 px-6 flex flex-col gap-4 font-[family-name:var(--font-inter)]">
-          <Link href="/" onClick={closeMobileMenu} className="text-white/80 hover:text-[#f2ca50] transition-colors py-2 text-[16px]">Home</Link>
-          <Link href="/cars" onClick={closeMobileMenu} className="text-white/80 hover:text-[#f2ca50] transition-colors py-2 text-[16px]">Explore Cars</Link>
-          <Link href="/add-car" onClick={closeMobileMenu} className="text-white/80 hover:text-[#f2ca50] transition-colors py-2 text-[16px]">Add Car</Link>
-          <Link href="/my-bookings" onClick={closeMobileMenu} className="text-white/80 hover:text-[#f2ca50] transition-colors py-2 text-[16px]">My Bookings</Link>
-          
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#1a1814] border-b border-white/10 shadow-2xl py-4 px-6 flex flex-col gap-2 font-[family-name:var(--font-inter)]">
+          <Link href="/" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>Home</Link>
+          <Link href="/cars" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/cars' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>Explore Cars</Link>
+          <Link href="/add-car" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/add-car' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>Add Car</Link>
+          <Link href="/my-bookings" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/my-bookings' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>My Bookings</Link>
+
           <div className="h-px bg-white/10 my-2"></div>
-          
+
           {user ? (
             <>
-              <Link href="/my-added-cars" onClick={closeMobileMenu} className="text-white/80 hover:text-[#f2ca50] transition-colors py-2 text-[16px]">My Added Cars</Link>
-              <button onClick={handleLogout} className="text-left text-red-400 hover:text-red-300 transition-colors py-2 text-[16px]">Logout</button>
+              <Link href="/my-added-cars" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/my-added-cars' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>My Added Cars</Link>
+              <button onClick={handleLogout} className="text-left px-4 text-red-400 hover:bg-white/5 hover:text-red-300 rounded-md transition-colors py-2.5 text-[16px]">Logout</button>
             </>
           ) : (
             <div className="flex flex-col gap-3 mt-2">

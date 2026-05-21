@@ -54,7 +54,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[#110e07] pt-20">
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-white dark:bg-[#110e07] pt-20 transition-colors duration-300">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
@@ -62,7 +62,7 @@ export default function LoginPage() {
           className="w-full h-full object-cover opacity-30 blur-[2px]"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDMxKGktfUETX4bnp4FPhlVMdrklsFcluIjpBpwlJ1zqKuAcUVwGqwzIl27BpHMzTKdLNH_KTj7HggS-84D1hcEGnVQbaswhy38SpIrgyciuRy5Ovshb36oJT7YBHpUcOSWpsyjBHCk1XpX6Y02HcE_dACd3vc0BO9oNoqqSqtiHshW40kPBx1j6N_eWALkCrrDMCVPTCNGPSVj8CWtx2Bx2oXt0Huy15cHZTmVH9C-09SESzm80Ri3ehZLABaioxjDhFKYGCsizo"
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#16130b] via-[#16130b]/90 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/90 dark:from-[#16130b] via-white/80 dark:via-[#16130b]/90 to-transparent"></div>
       </div>
 
       <div className="relative z-10 w-full max-w-md px-6">
@@ -71,20 +71,20 @@ export default function LoginPage() {
           <Link href="/" className="inline-block font-[family-name:var(--font-montserrat)] text-[40px] font-bold text-[#f2ca50] tracking-tight mb-2">
             DriveFleet
           </Link>
-          <p className="font-[family-name:var(--font-inter)] text-white/70 text-[15px]">
+          <p className="font-[family-name:var(--font-inter)] text-black/70 dark:text-white/70 text-[15px]">
             Premium Mobility Redefined
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-[#1a1814]/95 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl w-full">
+        <div className="bg-white/95 dark:bg-[#1a1814]/95 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-2xl p-8 shadow-2xl w-full">
 
           {/* Tabs */}
-          <div className="flex border-b border-white/10 mb-8">
+          <div className="flex border-b border-black/10 dark:border-white/10 mb-8">
             <Link href="/login" className="flex-1 text-center pb-4 border-b-2 border-[#f2ca50] text-[#f2ca50] font-[family-name:var(--font-inter)] font-medium text-[15px]">
               Login
             </Link>
-            <Link href="/register" className="flex-1 text-center pb-4 text-white/50 hover:text-white/80 transition-colors font-[family-name:var(--font-inter)] font-medium text-[15px]">
+            <Link href="/register" className="flex-1 text-center pb-4 text-black/50 dark:text-white/50 hover:text-black/80 dark:hover:text-white/80 transition-colors font-[family-name:var(--font-inter)] font-medium text-[15px]">
               Register
             </Link>
           </div>
@@ -93,14 +93,14 @@ export default function LoginPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-white/80 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
+              <label className="block text-black/80 dark:text-white/80 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Email Address
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white text-black px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f2ca50] font-[family-name:var(--font-inter)]"
+                className="w-full bg-[#f8f9fa] dark:bg-white text-black px-4 py-3 rounded-md border border-black/10 dark:border-transparent focus:outline-none focus:ring-2 focus:ring-[#f2ca50] font-[family-name:var(--font-inter)]"
                 placeholder="executive@drivefleet.com"
                 required
               />
@@ -108,14 +108,14 @@ export default function LoginPage() {
 
             {/* Password */}
             <div>
-              <label className="block text-white/80 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
+              <label className="block text-black/80 dark:text-white/80 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Password
               </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-white text-black px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f2ca50] font-[family-name:var(--font-inter)] tracking-widest"
+                className="w-full bg-[#f8f9fa] dark:bg-white text-black px-4 py-3 rounded-md border border-black/10 dark:border-transparent focus:outline-none focus:ring-2 focus:ring-[#f2ca50] font-[family-name:var(--font-inter)] tracking-widest"
                 placeholder="••••••••"
                 required
               />
@@ -124,8 +124,8 @@ export default function LoginPage() {
             {/* Remember Me & Forgot Password */}
             <div className="flex justify-between items-center mt-[-8px]">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="w-4 h-4 rounded border-white/20 bg-transparent text-[#f2ca50] focus:ring-[#f2ca50] focus:ring-offset-[#1a1814] accent-[#f2ca50]" />
-                <span className="text-white/70 text-[13px] font-[family-name:var(--font-inter)] group-hover:text-white transition-colors">Remember me</span>
+                <input type="checkbox" className="w-4 h-4 rounded border-black/20 dark:border-white/20 bg-transparent text-[#f2ca50] focus:ring-[#f2ca50] focus:ring-offset-white dark:focus:ring-offset-[#1a1814] accent-[#f2ca50]" />
+                <span className="text-black/70 dark:text-white/70 text-[13px] font-[family-name:var(--font-inter)] group-hover:text-black dark:group-hover:text-white transition-colors">Remember me</span>
               </label>
               <button type="button" className="text-[#f2ca50] text-[13px] font-[family-name:var(--font-inter)] hover:underline">
                 Forgot password?
@@ -149,16 +149,16 @@ export default function LoginPage() {
 
           {/* Divider */}
           <div className="flex items-center my-8">
-            <div className="flex-1 h-px bg-white/10"></div>
-            <span className="px-4 text-white/40 text-[11px] font-bold uppercase tracking-wider font-[family-name:var(--font-inter)]">OR CONTINUE WITH</span>
-            <div className="flex-1 h-px bg-white/10"></div>
+            <div className="flex-1 h-px bg-black/10 dark:bg-white/10"></div>
+            <span className="px-4 text-black/40 dark:text-white/40 text-[11px] font-bold uppercase tracking-wider font-[family-name:var(--font-inter)]">OR CONTINUE WITH</span>
+            <div className="flex-1 h-px bg-black/10 dark:bg-white/10"></div>
           </div>
 
           {/* Google Button */}
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="w-full bg-[#1e1c18] border border-white/10 text-white font-[family-name:var(--font-inter)] font-medium text-[15px] py-3 rounded-md hover:bg-white/5 transition-colors flex items-center justify-center gap-3"
+            className="w-full bg-[#f8f9fa] dark:bg-[#1e1c18] border border-black/10 dark:border-white/10 text-black dark:text-white font-[family-name:var(--font-inter)] font-medium text-[15px] py-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center gap-3"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -170,7 +170,7 @@ export default function LoginPage() {
           </button>
 
           {/* Bottom Link */}
-          <p className="text-center text-white/60 text-[14px] font-[family-name:var(--font-inter)] mt-8">
+          <p className="text-center text-black/60 dark:text-white/60 text-[14px] font-[family-name:var(--font-inter)] mt-8">
             Don't have an account? <Link href="/register" className="text-[#f2ca50] font-bold hover:underline">Register now</Link>
           </p>
 

@@ -16,6 +16,8 @@ const inter = Inter({
   weight: ["400", "600"],
 });
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 export const metadata = {
   title: "DriveFleet - Premium Car Rental",
   description: "The world's premier platform for high-end automotive experiences and luxury rentals.",
@@ -23,18 +25,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
           rel="stylesheet"
         />
       </head>
-      <body className={`${montserrat.variable} ${inter.variable} antialiased min-h-screen flex flex-col`}>
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <Toaster position="top-center" />
+      <body className={`${montserrat.variable} ${inter.variable} antialiased min-h-screen flex flex-col bg-white dark:bg-[#110e07] text-black dark:text-white transition-colors duration-300`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <Toaster position="top-center" />
+        </ThemeProvider>
       </body>
     </html>
   );
