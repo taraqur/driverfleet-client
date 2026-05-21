@@ -1,31 +1,61 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
+import { useSession } from '@/lib/auth-client';
+import toast from 'react-hot-toast';
 
 const MyBookings = () => {
-  // Mock data
-  const bookings = [
-    {
-      id: 1,
-      carName: "Mercedes-Benz S-Class",
-      image: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=2115&auto=format&fit=crop",
-      startDate: "2026-06-01",
-      endDate: "2026-06-05",
-      totalPrice: 1200,
-      status: "Confirmed"
-    },
-    {
-      id: 2,
-      carName: "Porsche 911 GT3",
-      image: "https://images.unsplash.com/photo-1503376710926-259168923a1a?q=80&w=2070&auto=format&fit=crop",
-      startDate: "2026-06-15",
-      endDate: "2026-06-17",
-      totalPrice: 950,
-      status: "Pending"
+  const { data: session } = useSession();
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      fetchBookings();
     }
-  ];
+  }, [session?.user?.email]);
+
+  const fetchBookings = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/my-bookings?email=${session.user.email}`, {
+        withCredentials: true
+      });
+      setBookings(res.data);
+    } catch (error) {
+      toast.error("Failed to fetch bookings");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCancel = async (id) => {
+    const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
+    if (!confirmCancel) return;
+
+    try {
+      await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/bookings/${id}`, {
+        withCredentials: true
+      });
+      toast.success("Booking canceled successfully");
+      setBookings(bookings.filter(b => b._id !== id));
+    } catch (error) {
+      toast.error("Failed to cancel booking");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-[#f2ca50]/30 border-t-[#f2ca50] rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
         <div>
           <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-montserrat)] text-white mb-2">My Bookings</h1>
@@ -36,41 +66,52 @@ const MyBookings = () => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-        {bookings.map((booking) => (
-          <div key={booking.id} className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden hover:border-[#f2ca50]/50 transition-all duration-300 group shadow-xl">
-            <div className="h-56 overflow-hidden relative">
-              <img src={booking.image} alt={booking.carName} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
-                <span className={`text-xs font-semibold uppercase tracking-wider ${booking.status === 'Confirmed' ? 'text-green-400' : 'text-yellow-400'}`}>
-                  {booking.status}
-                </span>
-              </div>
-            </div>
-            <div className="p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-white mb-4 font-[family-name:var(--font-montserrat)]">{booking.carName}</h3>
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center text-white/70 text-sm font-[family-name:var(--font-inter)]">
-                  <span className="material-symbols-outlined text-[20px] mr-3 text-[#f2ca50]">calendar_month</span>
-                  {booking.startDate} to {booking.endDate}
-                </div>
-                <div className="flex items-center text-white/70 text-sm font-[family-name:var(--font-inter)]">
-                  <span className="material-symbols-outlined text-[20px] mr-3 text-[#f2ca50]">payments</span>
-                  ${booking.totalPrice} Total
+      {bookings.length === 0 ? (
+        <div className="bg-[#1a1814] border border-white/10 rounded-3xl p-16 text-center shadow-xl">
+          <span className="material-symbols-outlined text-6xl text-white/20 mb-4">event_busy</span>
+          <h3 className="text-2xl font-bold text-white mb-2 font-[family-name:var(--font-montserrat)]">No bookings found</h3>
+          <p className="text-white/60 font-[family-name:var(--font-inter)] mb-6">You haven't made any reservations yet.</p>
+          <Link href="/cars" className="inline-block bg-[#f2ca50] text-black px-8 py-3 rounded-full hover:bg-white transition-colors font-bold font-[family-name:var(--font-inter)]">
+            Explore Fleet
+          </Link>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {bookings.map((booking) => (
+            <div key={booking._id} className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl overflow-hidden hover:border-[#f2ca50]/50 transition-all duration-300 group shadow-xl flex flex-col">
+              <div className="h-56 overflow-hidden relative">
+                <img src={booking.image} alt={booking.carName} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-green-400">
+                    Confirmed
+                  </span>
                 </div>
               </div>
-              <div className="flex gap-4">
-                 <button className="flex-1 bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl text-sm font-medium transition-colors border border-white/5">
-                   View Details
-                 </button>
-                 <button className="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-400 py-3 rounded-xl text-sm font-medium transition-colors border border-red-500/20">
-                   Cancel
-                 </button>
+              <div className="p-6 md:p-8 flex-1 flex flex-col">
+                <h3 className="text-2xl font-bold text-white mb-4 font-[family-name:var(--font-montserrat)]">{booking.carName}</h3>
+                <div className="space-y-3 mb-8 flex-1">
+                  <div className="flex items-center text-white/70 text-sm font-[family-name:var(--font-inter)]">
+                    <span className="material-symbols-outlined text-[20px] mr-3 text-[#f2ca50]">calendar_month</span>
+                    {booking.startDate} to {booking.endDate}
+                  </div>
+                  <div className="flex items-center text-white/70 text-sm font-[family-name:var(--font-inter)]">
+                    <span className="material-symbols-outlined text-[20px] mr-3 text-[#f2ca50]">payments</span>
+                    ${booking.totalPrice} Total
+                  </div>
+                </div>
+                <div className="flex gap-4 mt-auto">
+                   <Link href={`/cars/${booking.carId}`} className="flex-1 text-center bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl text-sm font-medium transition-colors border border-white/5">
+                     View Details
+                   </Link>
+                   <button onClick={() => handleCancel(booking._id)} className="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-400 py-3 rounded-xl text-sm font-medium transition-colors border border-red-500/20">
+                     Cancel
+                   </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
