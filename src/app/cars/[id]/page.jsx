@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 const CarDetails = () => {
   const { id } = useParams();
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, isPending } = useSession();
 
   const [car, setCar] = useState(null);
   const [similarCars, setSimilarCars] = useState([]);
@@ -21,6 +21,14 @@ const CarDetails = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [bookingLoading, setBookingLoading] = useState(false);
+
+  // Redirect if not logged in
+  useEffect(() => {
+    if (!isPending && !session?.user) {
+      toast.error("You must be logged in to view car details.");
+      router.push('/login');
+    }
+  }, [session, isPending, router]);
 
   useEffect(() => {
     const fetchCarData = async () => {
@@ -100,12 +108,17 @@ const CarDetails = () => {
     }
   };
 
-  if (loading) {
+  if (loading || isPending) {
     return (
       <div className="min-h-screen bg-[#110e07] flex items-center justify-center pt-20">
         <div className="w-12 h-12 border-4 border-[#f2ca50]/30 border-t-[#f2ca50] rounded-full animate-spin"></div>
       </div>
     );
+  }
+
+  // Do not render details if not logged in (to prevent flashing before redirect)
+  if (!session?.user) {
+    return null;
   }
 
   if (!car) {

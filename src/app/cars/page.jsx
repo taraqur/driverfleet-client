@@ -160,6 +160,15 @@ const ExploreCars = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
+                    {/* Availability Tag */}
+                    <div className="absolute top-4 left-4 px-3 py-1.5 backdrop-blur-md bg-black/50 border border-white/10 rounded-md text-[13px] font-bold">
+                      {car.availability === 'Unavailable' || car.availability === false ? (
+                        <span className="text-red-400">Unavailable</span>
+                      ) : (
+                        <span className="text-green-400">Available</span>
+                      )}
+                    </div>
+
                     {/* Price Tag */}
                     <div className="absolute top-4 right-4 px-3 py-1.5 bg-[#f2ca50] rounded-md text-black text-[13px] font-bold">
                       ${car.price} <span className="text-black/70 text-[11px] font-medium">/ day</span>
@@ -179,13 +188,11 @@ const ExploreCars = () => {
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#23201a] border border-white/5 text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
-                        Automatic
-                      </div>
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#23201a] border border-white/5 text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
                         {car.capacity} Seats
                       </div>
                       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#23201a] border border-white/5 text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
-                        Gasoline
+                        <span className="material-symbols-outlined text-[14px]">location_on</span>
+                        {car.location || "N/A"}
                       </div>
                     </div>
 
