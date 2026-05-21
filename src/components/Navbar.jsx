@@ -34,7 +34,7 @@ const Navbar = () => {
     }
     
     setIsMobileMenuOpen(false);
-    router.push('/login');
+    window.location.href = '/login';
   };
 
   const toggleMobileMenu = () => {
