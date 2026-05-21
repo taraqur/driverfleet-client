@@ -17,7 +17,7 @@ const ExploreCars = () => {
   const fetchCars = async (search = '', type = 'All') => {
     setLoading(true);
     try {
-      let url = '${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars';
+      let url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars`;
       const params = new URLSearchParams();
       if (search) params.append('search', search);
       if (type && type !== 'All') params.append('type', type);

@@ -32,7 +32,7 @@ export default function RegisterPage() {
         toast.error(error.message || "Failed to register");
       } else {
         try {
-          await axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/jwt', { email }, { withCredentials: true });
+          await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/jwt`, { email }, { withCredentials: true });
         } catch (jwtError) {
           console.error("Failed to set JWT:", jwtError);
         }

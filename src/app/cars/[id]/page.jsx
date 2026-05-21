@@ -84,7 +84,7 @@ const CarDetails = () => {
 
     setBookingLoading(true);
     try {
-      const response = await axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/bookings', {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/bookings`, {
         carId: car._id,
         carName: car.name,
         image: car.imageUrl,
