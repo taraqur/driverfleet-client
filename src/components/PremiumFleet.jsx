@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const PremiumFleet = () => {
   return (
@@ -11,9 +12,9 @@ const PremiumFleet = () => {
             <h2 className="font-[family-name:var(--font-montserrat)] text-[32px] font-bold text-[#e6e6e6] mb-2 tracking-tight">Premium Fleet</h2>
             <p className="font-[family-name:var(--font-inter)] text-[15px] text-white/60">Selected high-performance vehicles for the discerning driver.</p>
           </div>
-          <button className="flex items-center gap-2 text-[#f2ca50] font-[family-name:var(--font-inter)] text-[15px] font-bold hover:gap-3 transition-all pb-1">
+          <Link href="/cars" className="flex items-center gap-2 text-[#f2ca50] font-[family-name:var(--font-inter)] text-[15px] font-bold hover:gap-3 transition-all pb-1">
             View All <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-          </button>
+          </Link>
         </div>
 
         {/* Cars Grid */}
@@ -43,9 +44,9 @@ const PremiumFleet = () => {
                   <span className="material-symbols-outlined text-[16px]">settings</span> Automatic
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
+              <Link href="/cars" className="block text-center w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -71,9 +72,9 @@ const PremiumFleet = () => {
                   <span className="material-symbols-outlined text-[16px]">bolt</span> Electric Blue
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
+              <Link href="/cars" className="block text-center w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -99,9 +100,9 @@ const PremiumFleet = () => {
                   <span className="material-symbols-outlined text-[16px]">battery_charging_full</span> Electric
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
+              <Link href="/cars" className="block text-center w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -127,9 +128,9 @@ const PremiumFleet = () => {
                   <span className="material-symbols-outlined text-[16px]">terrain</span> AWD
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
+              <Link href="/cars" className="block text-center w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -155,9 +156,9 @@ const PremiumFleet = () => {
                   <span className="material-symbols-outlined text-[16px]">chair</span> Executive
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
+              <Link href="/cars" className="block text-center w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -183,9 +184,9 @@ const PremiumFleet = () => {
                   <span className="material-symbols-outlined text-[16px]">electric_car</span> Full EV
                 </div>
               </div>
-              <button className="w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
+              <Link href="/cars" className="block text-center w-full py-3 bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-[#332f26] transition-colors">
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
         </div>

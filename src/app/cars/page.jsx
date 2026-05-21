@@ -78,13 +78,13 @@ const ExploreCars = () => {
       </div>
 
       {/* Search and Filter Bar */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 -mt-8 relative z-20 mb-16">
-        <div className="bg-[#1a1814] border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row gap-4 shadow-2xl">
-
+      <div className="max-w-5xl mx-auto px-6 md:px-12 -mt-8 relative z-20 mb-16">
+        <div className="bg-[#1a1814] border border-white/10 rounded-full p-2 flex flex-col md:flex-row items-center gap-2 shadow-2xl">
+          
           {/* Search Input */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative w-full h-full">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-[#f2ca50]">search</span>
+              <span className="material-symbols-outlined text-[#f2ca50] text-[20px]">search</span>
             </div>
             <input
               type="text"
@@ -92,33 +92,35 @@ const ExploreCars = () => {
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
               placeholder="Search by car name..."
-              className="w-full bg-[#110e07] border border-white/5 rounded-xl py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:border-[#f2ca50]/50 font-[family-name:var(--font-inter)]"
+              className="w-full bg-transparent border-none py-3 pl-12 pr-4 text-white placeholder:text-white/40 focus:outline-none font-[family-name:var(--font-inter)] text-[15px]"
             />
           </div>
 
+          <div className="hidden md:block w-px h-8 bg-white/10"></div>
+
           {/* Category Dropdown */}
-          <div className="w-full md:w-64 relative">
+          <div className="w-full md:w-56 relative">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-white/60">tune</span>
+              <span className="material-symbols-outlined text-white/40 text-[18px]">tune</span>
             </div>
             <select
               value={category}
               onChange={handleCategoryChange}
-              className="w-full appearance-none bg-[#110e07] border border-white/5 rounded-xl py-3 pl-12 pr-10 text-white/90 focus:outline-none focus:border-[#f2ca50]/50 font-[family-name:var(--font-inter)] cursor-pointer"
+              className="w-full appearance-none bg-transparent border-none py-3 pl-12 pr-10 text-white/80 focus:outline-none font-[family-name:var(--font-inter)] text-[14px] cursor-pointer"
             >
               {categories.map(cat => (
-                <option key={cat} value={cat}>{cat === 'All' ? 'All Categories' : cat}</option>
+                <option key={cat} value={cat} className="bg-[#1a1814]">{cat === 'All' ? 'All Categories' : cat}</option>
               ))}
             </select>
             <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-white/60">keyboard_arrow_down</span>
+              <span className="material-symbols-outlined text-white/40 text-[18px]">expand_more</span>
             </div>
           </div>
 
           {/* Search Button */}
           <button
             onClick={handleSearch}
-            className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 rounded-xl font-bold font-[family-name:var(--font-inter)] hover:bg-white hover:shadow-[0_0_15px_rgba(242,202,80,0.5)] transition-all duration-300"
+            className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 rounded-full font-bold font-[family-name:var(--font-inter)] text-[14px] hover:bg-white transition-colors duration-300"
           >
             Search
           </button>
@@ -160,43 +162,36 @@ const ExploreCars = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
 
-                    {/* Availability Tag */}
-                    <div className="absolute top-4 left-4 px-3 py-1.5 backdrop-blur-md bg-black/50 border border-white/10 rounded-md text-[13px] font-bold">
-                      {car.availability === 'Unavailable' || car.availability === false ? (
-                        <span className="text-red-400">Unavailable</span>
-                      ) : (
-                        <span className="text-green-400">Available</span>
-                      )}
-                    </div>
-
                     {/* Price Tag */}
-                    <div className="absolute top-4 right-4 px-3 py-1.5 bg-[#f2ca50] rounded-md text-black text-[13px] font-bold">
-                      ${car.price} <span className="text-black/70 text-[11px] font-medium">/ day</span>
+                    <div className="absolute top-0 right-0 px-4 py-1.5 bg-[#f2ca50] rounded-bl-xl text-black text-[13px] font-bold">
+                      ${car.price}/day
                     </div>
                   </div>
-                  <div className="p-6">
-                    <div className="mb-5 flex justify-between items-start">
+                  <div className="p-6 pb-5">
+                    <div className="mb-4 flex justify-between items-start">
                       <div>
-                        <h3 className="font-[family-name:var(--font-inter)] text-[19px] font-bold text-white mb-1">{car.name}</h3>
+                        <h3 className="font-[family-name:var(--font-inter)] text-[22px] font-bold text-white mb-0.5">{car.name}</h3>
                         <p className="font-[family-name:var(--font-inter)] text-[13px] text-white/50">{car.type}</p>
                       </div>
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/5">
-                        <span className="material-symbols-outlined text-[#f2ca50] text-[18px]">speed</span>
+                      <div className="flex items-center justify-center">
+                        <span className="material-symbols-outlined text-[#f2ca50] text-[20px]">bolt</span>
                       </div>
                     </div>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#23201a] border border-white/5 text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      <div className="px-3 py-1 rounded-full bg-[#2a261c] text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                        Automatic
+                      </div>
+                      <div className="px-3 py-1 rounded-full bg-[#2a261c] text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
                         {car.capacity} Seats
                       </div>
-                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#23201a] border border-white/5 text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
-                        <span className="material-symbols-outlined text-[14px]">location_on</span>
-                        {car.location || "N/A"}
+                      <div className="px-3 py-1 rounded-full bg-[#2a261c] text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                        Gasoline
                       </div>
                     </div>
 
-                    <Link href={`/cars/${car._id}`} className="w-full block text-center py-3 bg-[#23201a] rounded-lg border border-white/5 font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-white hover:text-black transition-colors duration-300">
+                    <Link href={`/cars/${car._id}`} className="w-full block text-center py-2.5 bg-transparent rounded-lg border border-white/10 font-[family-name:var(--font-inter)] text-[13px] font-medium text-white hover:bg-white/5 transition-colors duration-300">
                       View Details
                     </Link>
                   </div>
