@@ -199,21 +199,7 @@ const ExploreCars = () => {
               ))}
             </div>
 
-            {/* Pagination / Load More */}
-            <div className="mt-16 flex flex-col items-center">
-              <button className="bg-[#1a1814] border border-white/10 text-white px-8 py-3 rounded-lg font-medium font-[family-name:var(--font-inter)] hover:bg-white/5 transition-colors mb-8 flex flex-col items-center">
-                <span>Load More</span>
-                <span className="text-white/40 text-[11px]">Vehicles</span>
-              </button>
 
-              <div className="flex items-center gap-4 text-white/60 font-[family-name:var(--font-inter)] text-[14px]">
-                <button className="w-8 h-8 flex items-center justify-center rounded bg-[#f2ca50] text-black font-bold">1</button>
-                <button className="w-8 h-8 flex items-center justify-center rounded hover:text-white transition-colors">2</button>
-                <button className="w-8 h-8 flex items-center justify-center rounded hover:text-white transition-colors">3</button>
-                <span>...</span>
-                <button className="w-8 h-8 flex items-center justify-center rounded hover:text-white transition-colors">12</button>
-              </div>
-            </div>
           </>
         )}
       </div>
