@@ -42,7 +42,8 @@ const MyBookings = () => {
       toast.success("Booking canceled successfully");
       setBookings(bookings.filter(b => b._id !== id));
     } catch (error) {
-      toast.error("Failed to cancel booking");
+      console.error(error);
+      toast.error(error.response?.data?.error || "Failed to cancel booking");
     }
   };
 
