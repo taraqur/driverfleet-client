@@ -10,22 +10,22 @@ const ExploreCars = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchInput, setSearchInput] = useState('');
   const [category, setCategory] = useState('All');
-  
+
   // Available categories based on the add-car form
   const categories = ['All', 'SUV', 'Sedan', 'Hatchback', 'Luxury', 'Sports'];
 
   const fetchCars = async (search = '', type = 'All') => {
     setLoading(true);
     try {
-      let url = 'http://localhost:5000/api/cars';
+      let url = '${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars';
       const params = new URLSearchParams();
       if (search) params.append('search', search);
       if (type && type !== 'All') params.append('type', type);
-      
+
       if (params.toString()) {
         url += `?${params.toString()}`;
       }
-      
+
       const response = await axios.get(url);
       setCars(response.data);
     } catch (error) {
@@ -54,19 +54,19 @@ const ExploreCars = () => {
 
   return (
     <div className="min-h-screen bg-[#110e07] pt-20">
-      
+
       {/* Hero Section */}
       <div className="relative h-[400px] w-full flex flex-col items-center justify-center overflow-hidden">
         {/* Background image from the screenshot (similar concept) */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop" 
-            alt="Fleet Background" 
+          <img
+            src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop"
+            alt="Fleet Background"
             className="w-full h-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#110e07]/60 via-[#110e07]/40 to-[#110e07]"></div>
         </div>
-        
+
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
           <h1 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
             Explore Our Fleet
@@ -80,13 +80,13 @@ const ExploreCars = () => {
       {/* Search and Filter Bar */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 -mt-8 relative z-20 mb-16">
         <div className="bg-[#1a1814] border border-white/10 rounded-2xl p-4 flex flex-col md:flex-row gap-4 shadow-2xl">
-          
+
           {/* Search Input */}
           <div className="flex-1 relative">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
               <span className="material-symbols-outlined text-[#f2ca50]">search</span>
             </div>
-            <input 
+            <input
               type="text"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
@@ -101,7 +101,7 @@ const ExploreCars = () => {
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
               <span className="material-symbols-outlined text-white/60">tune</span>
             </div>
-            <select 
+            <select
               value={category}
               onChange={handleCategoryChange}
               className="w-full appearance-none bg-[#110e07] border border-white/5 rounded-xl py-3 pl-12 pr-10 text-white/90 focus:outline-none focus:border-[#f2ca50]/50 font-[family-name:var(--font-inter)] cursor-pointer"
@@ -116,7 +116,7 @@ const ExploreCars = () => {
           </div>
 
           {/* Search Button */}
-          <button 
+          <button
             onClick={handleSearch}
             className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 rounded-xl font-bold font-[family-name:var(--font-inter)] hover:bg-white hover:shadow-[0_0_15px_rgba(242,202,80,0.5)] transition-all duration-300"
           >
@@ -136,7 +136,7 @@ const ExploreCars = () => {
             <span className="material-symbols-outlined text-6xl text-white/20 mb-4">directions_car</span>
             <h3 className="text-2xl font-bold text-white mb-2 font-[family-name:var(--font-montserrat)]">No vehicles found</h3>
             <p className="text-white/60 font-[family-name:var(--font-inter)]">Try adjusting your search criteria or category filter.</p>
-            <button 
+            <button
               onClick={() => {
                 setSearchInput('');
                 setSearchTerm('');
@@ -154,12 +154,12 @@ const ExploreCars = () => {
               {cars.map((car) => (
                 <div key={car._id} className="group rounded-2xl overflow-hidden bg-[#1a1814] border border-white/5 hover:border-white/10 transition-all duration-300">
                   <div className="relative h-56 overflow-hidden">
-                    <img 
-                      alt={car.name} 
-                      src={car.imageUrl} 
+                    <img
+                      alt={car.name}
+                      src={car.imageUrl}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    
+
                     {/* Price Tag */}
                     <div className="absolute top-4 right-4 px-3 py-1.5 bg-[#f2ca50] rounded-md text-black text-[13px] font-bold">
                       ${car.price} <span className="text-black/70 text-[11px] font-medium">/ day</span>
@@ -175,7 +175,7 @@ const ExploreCars = () => {
                         <span className="material-symbols-outlined text-[#f2ca50] text-[18px]">speed</span>
                       </div>
                     </div>
-                    
+
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#23201a] border border-white/5 text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
@@ -188,7 +188,7 @@ const ExploreCars = () => {
                         Gasoline
                       </div>
                     </div>
-                    
+
                     <Link href={`/cars/${car._id}`} className="w-full block text-center py-3 bg-[#23201a] rounded-lg border border-white/5 font-[family-name:var(--font-inter)] text-[14px] font-medium text-white hover:bg-white hover:text-black transition-colors duration-300">
                       View Details
                     </Link>
@@ -203,7 +203,7 @@ const ExploreCars = () => {
                 <span>Load More</span>
                 <span className="text-white/40 text-[11px]">Vehicles</span>
               </button>
-              
+
               <div className="flex items-center gap-4 text-white/60 font-[family-name:var(--font-inter)] text-[14px]">
                 <button className="w-8 h-8 flex items-center justify-center rounded bg-[#f2ca50] text-black font-bold">1</button>
                 <button className="w-8 h-8 flex items-center justify-center rounded hover:text-white transition-colors">2</button>

@@ -32,7 +32,7 @@ export default function RegisterPage() {
         toast.error(error.message || "Failed to register");
       } else {
         try {
-          await axios.post('http://localhost:5000/api/jwt', { email }, { withCredentials: true });
+          await axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/jwt', { email }, { withCredentials: true });
         } catch (jwtError) {
           console.error("Failed to set JWT:", jwtError);
         }
@@ -77,16 +77,16 @@ export default function RegisterPage() {
 
         {/* Form Card */}
         <div className="bg-[#14120e]/80 backdrop-blur-md border border-white/5 rounded-[12px] p-8 shadow-2xl w-full">
-          
+
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-            
+
             {/* Full Name */}
             <div>
               <label className="block text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Full Name
               </label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full bg-[#1c1a17] text-white border border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px]"
@@ -100,8 +100,8 @@ export default function RegisterPage() {
               <label className="block text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Email Address
               </label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-[#1c1a17] text-white border border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px]"
@@ -115,15 +115,15 @@ export default function RegisterPage() {
               <label className="block text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Photo URL
               </label>
-              <input 
-                type="url" 
+              <input
+                type="url"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
                 className="w-full bg-[#1c1a17] text-white border border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px]"
                 placeholder="https://image.path/profile.jpg"
               />
             </div>
-            
+
             {/* Password */}
             <div>
               <div className="flex justify-between items-center mb-2">
@@ -135,8 +135,8 @@ export default function RegisterPage() {
                 </span>
               </div>
               <div className="relative">
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-[#1c1a17] text-white border border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px] tracking-widest"
@@ -147,8 +147,8 @@ export default function RegisterPage() {
             </div>
 
             {/* Submit Button */}
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className="w-full bg-[#f2ca50] text-[#16130b] font-bold text-[16px] font-[family-name:var(--font-inter)] py-3.5 rounded-md hover:bg-[#ffe088] transition-colors mt-4 flex items-center justify-center gap-2 disabled:opacity-50"
             >
@@ -173,8 +173,8 @@ export default function RegisterPage() {
           </div>
 
           {/* Google Button */}
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={handleGoogleSignIn}
             className="w-full bg-[#1e1c18] border border-white/10 text-white font-[family-name:var(--font-inter)] font-medium text-[14px] py-3 rounded-md hover:bg-white/5 transition-colors flex items-center justify-center gap-3"
           >
@@ -191,7 +191,7 @@ export default function RegisterPage() {
           <p className="text-center text-white/60 text-[14px] font-[family-name:var(--font-inter)] mt-8">
             Already have an account? <Link href="/login" className="text-[#f2ca50] font-bold hover:underline">Login here</Link>
           </p>
-          
+
         </div>
 
         {/* Small footer below form */}

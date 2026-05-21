@@ -10,7 +10,7 @@ const MyAddedCars = () => {
   const { data: session, isPending } = useSession();
   const [myCars, setMyCars] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Delete Modal State
   const [carToDelete, setCarToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -23,10 +23,10 @@ const MyAddedCars = () => {
 
   const fetchMyCars = async () => {
     if (!session?.user?.email) return;
-    
+
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/my-cars?email=${session.user.email}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/my-cars?email=${session.user.email}`, {
         withCredentials: true
       });
       setMyCars(response.data);
@@ -46,13 +46,13 @@ const MyAddedCars = () => {
 
   const handleDeleteConfirm = async () => {
     if (!carToDelete) return;
-    
+
     setIsDeleting(true);
     try {
-      const response = await axios.delete(`http://localhost:5000/api/cars/${carToDelete._id}`, {
+      const response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars/${carToDelete._id}`, {
         withCredentials: true
       });
-      
+
       if (response.data.success) {
         toast.success("Vehicle deleted successfully");
         setMyCars(myCars.filter(car => car._id !== carToDelete._id));
@@ -86,14 +86,14 @@ const MyAddedCars = () => {
         location: carToEdit.location,
       };
 
-      const response = await axios.put(`http://localhost:5000/api/cars/${carToEdit._id}`, updateData, {
+      const response = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars/${carToEdit._id}`, updateData, {
         withCredentials: true
       });
 
       if (response.data.success) {
         toast.success("Vehicle updated successfully");
         // Update local state
-        setMyCars(myCars.map(car => 
+        setMyCars(myCars.map(car =>
           car._id === carToEdit._id ? { ...car, ...updateData } : car
         ));
         setCarToEdit(null);
@@ -162,20 +162,20 @@ const MyAddedCars = () => {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                   <button 
+                  <button
                     onClick={() => setCarToEdit(car)}
                     className="flex-1 bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl text-sm font-bold tracking-wide transition-colors border border-white/5 flex items-center justify-center gap-2 uppercase font-[family-name:var(--font-inter)]"
-                   >
-                     <span className="material-symbols-outlined text-[18px]">edit</span>
-                     Update
-                   </button>
-                   <button 
+                  >
+                    <span className="material-symbols-outlined text-[18px]">edit</span>
+                    Update
+                  </button>
+                  <button
                     onClick={() => setCarToDelete(car)}
                     className="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-400 py-3 rounded-xl text-sm font-bold tracking-wide transition-colors border border-red-500/20 flex items-center justify-center gap-2 uppercase font-[family-name:var(--font-inter)]"
-                   >
-                     <span className="material-symbols-outlined text-[18px]">delete</span>
-                     Delete
-                   </button>
+                  >
+                    <span className="material-symbols-outlined text-[18px]">delete</span>
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
@@ -195,14 +195,14 @@ const MyAddedCars = () => {
               Are you sure you want to permanently delete <strong className="text-white">{carToDelete.name}</strong> from your fleet? This action cannot be undone.
             </p>
             <div className="flex gap-4">
-              <button 
+              <button
                 onClick={() => setCarToDelete(null)}
                 className="flex-1 bg-white/10 text-white py-3 rounded-xl font-bold font-[family-name:var(--font-inter)] hover:bg-white/20 transition-colors"
                 disabled={isDeleting}
               >
                 Cancel
               </button>
-              <button 
+              <button
                 onClick={handleDeleteConfirm}
                 className="flex-1 bg-red-500 text-white py-3 rounded-xl font-bold font-[family-name:var(--font-inter)] hover:bg-red-600 transition-colors flex items-center justify-center gap-2"
                 disabled={isDeleting}
@@ -218,25 +218,25 @@ const MyAddedCars = () => {
       {carToEdit && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto pt-24 pb-12">
           <div className="bg-[#1a1814] border border-white/10 rounded-2xl p-6 md:p-8 max-w-2xl w-full relative shadow-2xl my-auto">
-            <button 
+            <button
               onClick={() => setCarToEdit(null)}
               className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
               disabled={isUpdating}
             >
               <span className="material-symbols-outlined">close</span>
             </button>
-            
+
             <h3 className="text-2xl font-bold font-[family-name:var(--font-montserrat)] text-white mb-2">Update Vehicle</h3>
             <p className="text-white/60 font-[family-name:var(--font-inter)] text-sm mb-8">Update the details for {carToEdit.name}.</p>
-            
+
             <form onSubmit={handleEditSubmit} className="space-y-6">
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Price */}
                 <div>
                   <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Daily Rent Price ($)</label>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     name="price"
                     value={carToEdit.price}
                     onChange={handleEditChange}
@@ -244,11 +244,11 @@ const MyAddedCars = () => {
                     required
                   />
                 </div>
-                
+
                 {/* Availability */}
                 <div>
                   <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Availability Status</label>
-                  <select 
+                  <select
                     name="availability"
                     value={carToEdit.availability || 'Available'}
                     onChange={handleEditChange}
@@ -262,7 +262,7 @@ const MyAddedCars = () => {
                 {/* Car Type */}
                 <div>
                   <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Car Type</label>
-                  <select 
+                  <select
                     name="type"
                     value={carToEdit.type}
                     onChange={handleEditChange}
@@ -275,8 +275,8 @@ const MyAddedCars = () => {
                 {/* Location */}
                 <div>
                   <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Location</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="location"
                     value={carToEdit.location || ''}
                     onChange={handleEditChange}
@@ -289,8 +289,8 @@ const MyAddedCars = () => {
               {/* Image URL */}
               <div>
                 <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Image URL</label>
-                <input 
-                  type="url" 
+                <input
+                  type="url"
                   name="imageUrl"
                   value={carToEdit.imageUrl}
                   onChange={handleEditChange}
@@ -302,7 +302,7 @@ const MyAddedCars = () => {
               {/* Description */}
               <div>
                 <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Description</label>
-                <textarea 
+                <textarea
                   name="description"
                   value={carToEdit.description}
                   onChange={handleEditChange}
@@ -313,7 +313,7 @@ const MyAddedCars = () => {
               </div>
 
               <div className="flex justify-end gap-4 pt-4 border-t border-white/10">
-                <button 
+                <button
                   type="button"
                   onClick={() => setCarToEdit(null)}
                   className="bg-white/5 text-white px-6 py-3 rounded-lg font-bold font-[family-name:var(--font-inter)] hover:bg-white/10 transition-colors"
@@ -321,8 +321,8 @@ const MyAddedCars = () => {
                 >
                   Cancel
                 </button>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="bg-[#f2ca50] text-black px-8 py-3 rounded-lg font-bold font-[family-name:var(--font-inter)] hover:bg-white transition-colors"
                   disabled={isUpdating}
                 >
@@ -333,7 +333,7 @@ const MyAddedCars = () => {
           </div>
         </div>
       )}
-      
+
     </div>
   );
 };

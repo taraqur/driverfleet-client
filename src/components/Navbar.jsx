@@ -14,14 +14,14 @@ const Navbar = () => {
   // Sync JWT for social logins (like Google) where login page logic might be bypassed
   React.useEffect(() => {
     if (user?.email) {
-      axios.post('http://localhost:5000/api/jwt', { email: user.email }, { withCredentials: true })
+      axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/jwt', { email: user.email }, { withCredentials: true })
         .catch(err => console.error("Failed to sync JWT:", err));
     }
   }, [user?.email]);
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:5000/api/logout', {}, { withCredentials: true });
+      await axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/logout', {}, { withCredentials: true });
     } catch (err) {
       console.error("Failed to clear JWT:", err);
     }
@@ -36,7 +36,7 @@ const Navbar = () => {
         <Link href="/" className="font-[family-name:var(--font-montserrat)] text-[28px] font-bold text-[#f2ca50] tracking-tight">
           DriveFleet
         </Link>
-        
+
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 font-[family-name:var(--font-inter)] text-[15px] font-medium">
           <Link className="text-[#f2ca50] border-b-[3px] border-[#f2ca50] pb-1" href="/">Home</Link>
@@ -44,20 +44,20 @@ const Navbar = () => {
           <Link className="text-white/80 hover:text-white transition-colors" href="/add-car">Add Car</Link>
           <Link className="text-white/80 hover:text-white transition-colors" href="/my-bookings">My Bookings</Link>
         </div>
-        
+
         {/* Profile Action */}
         <div className="flex items-center gap-4">
           <button className="md:hidden text-white">
             <span className="material-symbols-outlined">menu</span>
           </button>
-          
+
           {user ? (
             <div className="relative group hidden md:block">
               <div className="flex items-center gap-2 px-5 py-2 rounded-full border border-[#f2ca50]/50 hover:bg-[#f2ca50]/10 transition-all cursor-pointer">
                 <span className="material-symbols-outlined text-[#f2ca50] text-[20px]">account_circle</span>
                 <span className="font-[family-name:var(--font-inter)] text-[15px] font-medium text-[#f2ca50]">Profile</span>
               </div>
-              
+
               {/* Dropdown Menu */}
               <div className="absolute right-0 mt-2 w-48 bg-[#1a1814] border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                 <div className="py-2 flex flex-col">

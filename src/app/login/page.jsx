@@ -28,7 +28,7 @@ export default function LoginPage() {
         toast.error(error.message || "Failed to login");
       } else {
         try {
-          await axios.post('http://localhost:5000/api/jwt', { email }, { withCredentials: true });
+          await axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/jwt', { email }, { withCredentials: true });
         } catch (jwtError) {
           console.error("Failed to set JWT:", jwtError);
         }
@@ -57,9 +57,9 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden bg-[#110e07] pt-20">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <img 
-          alt="Background" 
-          className="w-full h-full object-cover opacity-30 blur-[2px]" 
+        <img
+          alt="Background"
+          className="w-full h-full object-cover opacity-30 blur-[2px]"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDMxKGktfUETX4bnp4FPhlVMdrklsFcluIjpBpwlJ1zqKuAcUVwGqwzIl27BpHMzTKdLNH_KTj7HggS-84D1hcEGnVQbaswhy38SpIrgyciuRy5Ovshb36oJT7YBHpUcOSWpsyjBHCk1XpX6Y02HcE_dACd3vc0BO9oNoqqSqtiHshW40kPBx1j6N_eWALkCrrDMCVPTCNGPSVj8CWtx2Bx2oXt0Huy15cHZTmVH9C-09SESzm80Ri3ehZLABaioxjDhFKYGCsizo"
         />
         <div className="absolute inset-0 bg-gradient-to-tr from-[#16130b] via-[#16130b]/90 to-transparent"></div>
@@ -78,7 +78,7 @@ export default function LoginPage() {
 
         {/* Form Card */}
         <div className="bg-[#1a1814]/95 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-2xl w-full">
-          
+
           {/* Tabs */}
           <div className="flex border-b border-white/10 mb-8">
             <Link href="/login" className="flex-1 text-center pb-4 border-b-2 border-[#f2ca50] text-[#f2ca50] font-[family-name:var(--font-inter)] font-medium text-[15px]">
@@ -90,14 +90,14 @@ export default function LoginPage() {
           </div>
 
           <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-            
+
             {/* Email */}
             <div>
               <label className="block text-white/80 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Email Address
               </label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-white text-black px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f2ca50] font-[family-name:var(--font-inter)]"
@@ -105,14 +105,14 @@ export default function LoginPage() {
                 required
               />
             </div>
-            
+
             {/* Password */}
             <div>
               <label className="block text-white/80 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
                 Password
               </label>
-              <input 
-                type="password" 
+              <input
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-white text-black px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f2ca50] font-[family-name:var(--font-inter)] tracking-widest"
@@ -133,8 +133,8 @@ export default function LoginPage() {
             </div>
 
             {/* Submit Button */}
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className="w-full bg-[#f2ca50] text-[#16130b] font-bold text-[15px] font-[family-name:var(--font-inter)] py-3.5 rounded-md hover:bg-[#ffe088] transition-colors mt-2 disabled:opacity-50 flex justify-center items-center gap-2"
             >
@@ -155,8 +155,8 @@ export default function LoginPage() {
           </div>
 
           {/* Google Button */}
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={handleGoogleSignIn}
             className="w-full bg-[#1e1c18] border border-white/10 text-white font-[family-name:var(--font-inter)] font-medium text-[15px] py-3 rounded-md hover:bg-white/5 transition-colors flex items-center justify-center gap-3"
           >
@@ -173,7 +173,7 @@ export default function LoginPage() {
           <p className="text-center text-white/60 text-[14px] font-[family-name:var(--font-inter)] mt-8">
             Don't have an account? <Link href="/register" className="text-[#f2ca50] font-bold hover:underline">Register now</Link>
           </p>
-          
+
         </div>
       </div>
     </div>

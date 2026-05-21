@@ -41,7 +41,7 @@ const AddCar = () => {
         userName: session.user.name,
       };
 
-      const response = await axios.post('http://localhost:5000/api/cars', carData, {
+      const response = await axios.post('${process.env}}/api/cars', carData, {
         withCredentials: true
       });
 
@@ -70,13 +70,13 @@ const AddCar = () => {
       <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
         {/* Decorative background glow */}
         <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#f2ca50]/10 rounded-full blur-3xl pointer-events-none"></div>
-        
+
         <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="space-y-3">
               <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Car Name</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -87,8 +87,8 @@ const AddCar = () => {
             </div>
             <div className="space-y-3">
               <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Daily Rent Price ($)</label>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 name="price"
                 value={formData.price}
                 onChange={handleChange}
@@ -97,10 +97,10 @@ const AddCar = () => {
                 required
               />
             </div>
-            
+
             <div className="space-y-3">
               <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Car Type</label>
-              <select 
+              <select
                 name="type"
                 value={formData.type}
                 onChange={handleChange}
@@ -117,8 +117,8 @@ const AddCar = () => {
 
             <div className="space-y-3">
               <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Seat Capacity</label>
-              <input 
-                type="number" 
+              <input
+                type="number"
                 name="capacity"
                 value={formData.capacity}
                 onChange={handleChange}
@@ -130,8 +130,8 @@ const AddCar = () => {
 
             <div className="space-y-3">
               <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Pickup Location</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
@@ -143,7 +143,7 @@ const AddCar = () => {
 
             <div className="space-y-3">
               <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Availability Status</label>
-              <select 
+              <select
                 name="availability"
                 value={formData.availability}
                 onChange={handleChange}
@@ -158,8 +158,8 @@ const AddCar = () => {
 
           <div className="space-y-3">
             <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Image URL</label>
-            <input 
-              type="url" 
+            <input
+              type="url"
               name="imageUrl"
               value={formData.imageUrl}
               onChange={handleChange}
@@ -171,7 +171,7 @@ const AddCar = () => {
 
           <div className="space-y-3">
             <label className="text-sm font-medium text-white/80 font-[family-name:var(--font-inter)]">Description</label>
-            <textarea 
+            <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
@@ -183,7 +183,7 @@ const AddCar = () => {
           </div>
 
           <div className="pt-6">
-            <button 
+            <button
               type="submit"
               disabled={loading}
               className="w-full bg-[#f2ca50] disabled:opacity-50 hover:bg-white text-black font-semibold py-4 rounded-2xl transition-all duration-300 font-[family-name:var(--font-inter)] text-lg flex items-center justify-center gap-2 group"

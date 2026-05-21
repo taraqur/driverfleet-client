@@ -11,11 +11,11 @@ const CarDetails = () => {
   const { id } = useParams();
   const router = useRouter();
   const { data: session } = useSession();
-  
+
   const [car, setCar] = useState(null);
   const [similarCars, setSimilarCars] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Booking modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [startDate, setStartDate] = useState('');
@@ -27,12 +27,12 @@ const CarDetails = () => {
       setLoading(true);
       try {
         const [carRes, allCarsRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/cars/${id}`),
-          axios.get(`http://localhost:5000/api/cars`)
+          axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars/${id}`),
+          axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/cars`)
         ]);
-        
+
         setCar(carRes.data);
-        
+
         // Get 3 similar cars
         const others = allCarsRes.data.filter(c => c._id !== id);
         setSimilarCars(others.slice(0, 3));
@@ -43,7 +43,7 @@ const CarDetails = () => {
         setLoading(false);
       }
     };
-    
+
     if (id) {
       fetchCarData();
     }
@@ -56,27 +56,27 @@ const CarDetails = () => {
       router.push('/login');
       return;
     }
-    
+
     if (!startDate || !endDate) {
       toast.error("Please select start and end dates.");
       return;
     }
-    
+
     const start = new Date(startDate);
     const end = new Date(endDate);
-    
+
     if (start > end) {
       toast.error("End date cannot be before start date.");
       return;
     }
-    
+
     const diffTime = Math.abs(end - start);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
     const totalPrice = diffDays * car.price;
 
     setBookingLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/bookings', {
+      const response = await axios.post('${process.env.NEXT_PUBLIC_SERVER_URL}/api/bookings', {
         carId: car._id,
         carName: car.name,
         image: car.imageUrl,
@@ -86,7 +86,7 @@ const CarDetails = () => {
         totalPrice,
         status: 'Pending'
       }, { withCredentials: true });
-      
+
       if (response.data.success) {
         toast.success("Vehicle booked successfully!");
         setIsModalOpen(false);
@@ -123,19 +123,19 @@ const CarDetails = () => {
 
   return (
     <div className="min-h-screen bg-[#110e07] pt-20">
-      
+
       {/* Main Split Content */}
       <div className="flex flex-col lg:flex-row min-h-[calc(100vh-80px)]">
-        
+
         {/* Left Side - Image & Stats */}
         <div className="w-full lg:w-[60%] relative min-h-[500px] lg:min-h-full">
-          <img 
-            src={car.imageUrl} 
+          <img
+            src={car.imageUrl}
             alt={car.name}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#110e07] via-transparent to-transparent lg:hidden"></div>
-          
+
           {/* Stats Overlay */}
           <div className="absolute bottom-0 left-0 w-full p-6 lg:p-12 flex gap-4">
             {/* Speed Box */}
@@ -148,7 +148,7 @@ const CarDetails = () => {
                 <span className="text-sm">mph</span>
               </div>
             </div>
-            
+
             {/* Horsepower Box */}
             <div className="bg-[#1a1814]/90 backdrop-blur-md border border-white/10 rounded-xl p-5 w-48">
               <div className="text-white/50 text-[10px] font-bold tracking-[0.2em] mb-1 font-[family-name:var(--font-inter)] uppercase">
@@ -178,20 +178,20 @@ const CarDetails = () => {
                 </div>
               </div>
             </div>
-            
+
             <h1 className="text-white font-bold font-[family-name:var(--font-montserrat)] text-4xl mb-4 leading-tight">
               {car.name}
             </h1>
-            
+
             <div className="flex items-center gap-2 text-white/60 text-sm font-[family-name:var(--font-inter)] mb-8">
               <span className="material-symbols-outlined text-[#f2ca50] text-[18px]">location_on</span>
               {car.location || "Beverly Hills, Los Angeles"}
             </div>
-            
+
             <p className="text-white/80 font-[family-name:var(--font-inter)] text-[15px] leading-relaxed mb-10">
               {car.description || `Experience the pinnacle of automotive engineering with the ${car.name}. This ${car.type} provides unparalleled performance for the open road, delivering an intoxicating experience that redefines premium mobility.`}
             </p>
-            
+
             <div className="grid grid-cols-2 gap-6 mb-12">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
@@ -202,7 +202,7 @@ const CarDetails = () => {
                   <div className="text-white font-medium font-[family-name:var(--font-inter)]">Premium</div>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
                   <span className="material-symbols-outlined text-white/70">chair</span>
@@ -214,8 +214,8 @@ const CarDetails = () => {
               </div>
             </div>
           </div>
-          
-          <button 
+
+          <button
             onClick={() => setIsModalOpen(true)}
             className="w-full bg-[#f2ca50] text-black py-4 rounded-lg font-bold font-[family-name:var(--font-inter)] tracking-wide hover:bg-white transition-colors uppercase text-sm mt-auto"
           >
@@ -230,14 +230,14 @@ const CarDetails = () => {
           <h2 className="text-white font-bold font-[family-name:var(--font-montserrat)] text-3xl mb-10">
             Similar Luxury Rentals
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {similarCars.map((similarCar) => (
               <div key={similarCar._id} className="group rounded-2xl overflow-hidden bg-[#1a1814] border border-white/5 hover:border-white/10 transition-all duration-300">
                 <div className="relative h-56 overflow-hidden">
-                  <img 
-                    alt={similarCar.name} 
-                    src={similarCar.imageUrl} 
+                  <img
+                    alt={similarCar.name}
+                    src={similarCar.imageUrl}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute bottom-4 right-4 text-[#f2ca50] text-[15px] font-bold font-[family-name:var(--font-inter)] drop-shadow-md">
@@ -248,8 +248,8 @@ const CarDetails = () => {
                   <h3 className="font-[family-name:var(--font-inter)] text-[16px] font-bold text-white">
                     {similarCar.name}
                   </h3>
-                  <Link 
-                    href={`/cars/${similarCar._id}`} 
+                  <Link
+                    href={`/cars/${similarCar._id}`}
                     className="flex gap-2"
                   >
                     <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)]">
@@ -267,21 +267,21 @@ const CarDetails = () => {
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-[#1a1814] border border-white/10 rounded-2xl p-8 max-w-md w-full relative shadow-2xl">
-            <button 
+            <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors"
             >
               <span className="material-symbols-outlined">close</span>
             </button>
-            
+
             <h3 className="text-2xl font-bold font-[family-name:var(--font-montserrat)] text-white mb-2">Book {car.name}</h3>
             <p className="text-white/60 font-[family-name:var(--font-inter)] text-sm mb-6">Select your rental dates to proceed.</p>
-            
+
             <form onSubmit={handleBooking} className="space-y-4">
               <div>
                 <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Start Date</label>
-                <input 
-                  type="date" 
+                <input
+                  type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
                   min={new Date().toISOString().split('T')[0]}
@@ -289,11 +289,11 @@ const CarDetails = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="block text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">End Date</label>
-                <input 
-                  type="date" 
+                <input
+                  type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
                   min={startDate || new Date().toISOString().split('T')[0]}
@@ -301,7 +301,7 @@ const CarDetails = () => {
                   required
                 />
               </div>
-              
+
               {startDate && endDate && (
                 <div className="pt-4 pb-2 border-t border-white/10 mt-6 flex justify-between items-center">
                   <span className="text-white/70 font-[family-name:var(--font-inter)] text-sm">Total Estimated:</span>
@@ -310,9 +310,9 @@ const CarDetails = () => {
                   </span>
                 </div>
               )}
-              
-              <button 
-                type="submit" 
+
+              <button
+                type="submit"
                 disabled={bookingLoading}
                 className="w-full bg-[#f2ca50] text-black py-3 rounded-lg font-bold font-[family-name:var(--font-inter)] hover:bg-white transition-colors mt-4 disabled:opacity-50"
               >
@@ -322,7 +322,7 @@ const CarDetails = () => {
           </div>
         </div>
       )}
-      
+
     </div>
   );
 };
