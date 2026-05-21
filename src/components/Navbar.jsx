@@ -26,7 +26,13 @@ const Navbar = () => {
     } catch (err) {
       console.error("Failed to clear JWT:", err);
     }
-    await signOut();
+    
+    try {
+      await signOut();
+    } catch (err) {
+      console.error("Failed to sign out from better-auth:", err);
+    }
+    
     setIsMobileMenuOpen(false);
     router.push('/login');
   };
