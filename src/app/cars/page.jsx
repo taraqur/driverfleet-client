@@ -89,7 +89,7 @@ const ExploreCars = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
+            className="font-[family-name:var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
           >
             Explore Our Fleet
           </motion.h1>
@@ -97,7 +97,7 @@ const ExploreCars = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-[family-name:var(--font-inter)] text-lg text-white/90 max-w-2xl mx-auto"
+            className="font-[family-name:var(--font-body)] text-lg text-white/90 max-w-2xl mx-auto"
           >
             Precision engineering meets unparalleled luxury. Select your next drive from our curated collection of elite vehicles.
           </motion.p>
@@ -119,7 +119,7 @@ const ExploreCars = () => {
               onChange={(e) => setSearchInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
               placeholder="Search by car name..."
-              className="w-full bg-transparent border-none py-3 pl-12 pr-4 text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none font-[family-name:var(--font-inter)] text-[15px]"
+              className="w-full bg-transparent border-none py-3 pl-12 pr-4 text-black dark:text-white placeholder:text-black/40 dark:placeholder:text-white/40 focus:outline-none font-[family-name:var(--font-body)] text-[15px]"
             />
           </div>
 
@@ -133,7 +133,7 @@ const ExploreCars = () => {
             <select
               value={category}
               onChange={handleCategoryChange}
-              className="w-full appearance-none bg-transparent border-none py-3 pl-12 pr-10 text-black/80 dark:text-white/80 focus:outline-none font-[family-name:var(--font-inter)] text-[14px] cursor-pointer"
+              className="w-full appearance-none bg-transparent border-none py-3 pl-12 pr-10 text-black/80 dark:text-white/80 focus:outline-none font-[family-name:var(--font-body)] text-[14px] cursor-pointer"
             >
               {categories.map(cat => (
                 <option key={cat} value={cat} className="bg-white dark:bg-[#1a1814] text-black dark:text-white">{cat === 'All' ? 'All Categories' : cat}</option>
@@ -147,7 +147,7 @@ const ExploreCars = () => {
           {/* Search Button */}
           <button
             onClick={handleSearch}
-            className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 md:rounded-full rounded-2xl font-bold font-[family-name:var(--font-inter)] text-[14px] hover:bg-[#ffe088] transition-colors duration-300"
+            className="w-full md:w-auto bg-[#f2ca50] text-black px-8 py-3 md:rounded-full rounded-2xl font-bold font-[family-name:var(--font-body)] text-[14px] hover:bg-[#ffe088] transition-colors duration-300"
           >
             Search
           </button>
@@ -166,8 +166,8 @@ const ExploreCars = () => {
             className="bg-white dark:bg-[#1a1814] border border-black/10 dark:border-white/10 rounded-3xl p-16 text-center"
           >
             <span className="material-symbols-outlined text-6xl text-black/20 dark:text-white/20 mb-4">directions_car</span>
-            <h3 className="text-2xl font-bold text-black dark:text-white mb-2 font-[family-name:var(--font-montserrat)]">No vehicles found</h3>
-            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)]">Try adjusting your search criteria or category filter.</p>
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-2 font-[family-name:var(--font-heading)]">No vehicles found</h3>
+            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)]">Try adjusting your search criteria or category filter.</p>
             <button
               onClick={() => {
                 setSearchInput('');
@@ -205,8 +205,8 @@ const ExploreCars = () => {
                   <div className="p-6 pb-5">
                     <div className="mb-4 flex justify-between items-start">
                       <div>
-                        <h3 className="font-[family-name:var(--font-inter)] text-[22px] font-bold text-black dark:text-white mb-0.5">{car.name}</h3>
-                        <p className="font-[family-name:var(--font-inter)] text-[13px] text-black/50 dark:text-white/50">{car.type}</p>
+                        <h3 className="font-[family-name:var(--font-body)] text-[22px] font-bold text-black dark:text-white mb-0.5">{car.name}</h3>
+                        <p className="font-[family-name:var(--font-body)] text-[13px] text-black/50 dark:text-white/50">{car.type}</p>
                       </div>
                       <div className="flex items-center justify-center">
                         <span className="material-symbols-outlined text-[#f2ca50] text-[20px]">bolt</span>
@@ -215,18 +215,18 @@ const ExploreCars = () => {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-5">
-                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-body)]">
                         Automatic
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-body)]">
                         {car.capacity} Seats
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-inter)]">
+                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#2a261c] text-black/60 dark:text-white/60 text-[11px] font-medium font-[family-name:var(--font-body)]">
                         Gasoline
                       </div>
                     </div>
 
-                    <Link href={`/cars/${car._id}`} className="w-full block text-center py-2.5 bg-transparent rounded-lg border border-black/10 dark:border-white/10 font-[family-name:var(--font-inter)] text-[13px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300">
+                    <Link href={`/cars/${car._id}`} className="w-full block text-center py-2.5 bg-transparent rounded-lg border border-black/10 dark:border-white/10 font-[family-name:var(--font-body)] text-[13px] font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors duration-300">
                       View Details
                     </Link>
                   </div>

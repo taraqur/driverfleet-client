@@ -50,12 +50,12 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-[#16130b]/50 backdrop-blur-md border-b border-white/5">
       <div className="flex justify-between items-center px-6 md:px-12 py-5 max-w-7xl mx-auto">
         {/* Logo */}
-        <Link href="/" onClick={closeMobileMenu} className="font-[family-name:var(--font-montserrat)] text-[28px] font-bold text-[#f2ca50] tracking-tight">
+        <Link href="/" onClick={closeMobileMenu} className="font-[family-name:var(--font-heading)] text-[28px] font-bold text-[#f2ca50] tracking-tight">
           DriveFleet
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-2 font-[family-name:var(--font-inter)] text-[15px] font-medium">
+        <div className="hidden md:flex items-center gap-2 font-[family-name:var(--font-body)] text-[15px] font-medium">
           <Link 
             className={`px-4 py-2 rounded-md transition-all duration-300 ${pathname === '/' ? 'bg-[#f2ca50] text-black font-bold shadow-[0_0_10px_rgba(242,202,80,0.3)]' : 'text-white/80 hover:text-white hover:bg-white/10'}`} 
             href="/">
@@ -112,7 +112,7 @@ const Navbar = () => {
                   ) : (
                     <span className="material-symbols-outlined text-[#f2ca50] text-[24px]">account_circle</span>
                   )}
-                  <span className="font-[family-name:var(--font-inter)] text-[14px] font-medium text-[#f2ca50] truncate max-w-[100px] mr-1">
+                  <span className="font-[family-name:var(--font-body)] text-[14px] font-medium text-[#f2ca50] truncate max-w-[100px] mr-1">
                     {user?.name?.split(' ')[0] || "Profile"}
                   </span>
                 </div>
@@ -120,20 +120,20 @@ const Navbar = () => {
                 {/* Dropdown Menu */}
                 <div className="absolute right-0 mt-2 w-48 bg-[#1a1814] border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                   <div className="py-2 flex flex-col">
-                    <Link href="/add-car" className="px-4 py-2 text-white/80 hover:text-[#f2ca50] hover:bg-white/5 font-[family-name:var(--font-inter)] text-[14px]">Add Car</Link>
-                    <Link href="/my-bookings" className="px-4 py-2 text-white/80 hover:text-[#f2ca50] hover:bg-white/5 font-[family-name:var(--font-inter)] text-[14px]">My Bookings</Link>
-                    <Link href="/my-added-cars" className="px-4 py-2 text-white/80 hover:text-[#f2ca50] hover:bg-white/5 font-[family-name:var(--font-inter)] text-[14px]">My Added Cars</Link>
+                    <Link href="/add-car" className="px-4 py-2 text-white/80 hover:text-[#f2ca50] hover:bg-white/5 font-[family-name:var(--font-body)] text-[14px]">Add Car</Link>
+                    <Link href="/my-bookings" className="px-4 py-2 text-white/80 hover:text-[#f2ca50] hover:bg-white/5 font-[family-name:var(--font-body)] text-[14px]">My Bookings</Link>
+                    <Link href="/my-added-cars" className="px-4 py-2 text-white/80 hover:text-[#f2ca50] hover:bg-white/5 font-[family-name:var(--font-body)] text-[14px]">My Added Cars</Link>
                     <div className="h-px bg-white/10 my-1"></div>
-                    <button onClick={handleLogout} className="text-left px-4 py-2 text-red-400 hover:text-red-300 hover:bg-white/5 font-[family-name:var(--font-inter)] text-[14px]">Logout</button>
+                    <button onClick={handleLogout} className="text-left px-4 py-2 text-red-400 hover:text-red-300 hover:bg-white/5 font-[family-name:var(--font-body)] text-[14px]">Logout</button>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="flex items-center gap-6">
-                <Link href="/login" className="font-[family-name:var(--font-inter)] text-[15px] font-semibold text-white/90 hover:text-white transition-colors">
+                <Link href="/login" className="font-[family-name:var(--font-body)] text-[15px] font-semibold text-white/90 hover:text-white transition-colors">
                   Login
                 </Link>
-                <Link href="/register" className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f2ca50] text-black hover:bg-white hover:shadow-[0_0_15px_rgba(242,202,80,0.5)] transition-all duration-300 cursor-pointer font-[family-name:var(--font-inter)] text-[15px] font-bold">
+                <Link href="/register" className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f2ca50] text-black hover:bg-white hover:shadow-[0_0_15px_rgba(242,202,80,0.5)] transition-all duration-300 cursor-pointer font-[family-name:var(--font-body)] text-[15px] font-bold">
                   Join Free
                 </Link>
               </div>
@@ -144,7 +144,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#1a1814] border-b border-white/10 shadow-2xl py-4 px-6 flex flex-col gap-2 font-[family-name:var(--font-inter)]">
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#1a1814] border-b border-white/10 shadow-2xl py-4 px-6 flex flex-col gap-2 font-[family-name:var(--font-body)]">
           <Link href="/" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>Home</Link>
           <Link href="/cars" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/cars' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>Explore Cars</Link>
           <Link href="/add-car" onClick={closeMobileMenu} className={`py-2.5 px-4 rounded-md transition-colors text-[16px] ${pathname === '/add-car' ? 'bg-[#f2ca50] text-black font-bold' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}>Add Car</Link>

@@ -28,18 +28,18 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="max-w-xl"
         >
-          <h1 className="font-[family-name:var(--font-montserrat)] text-[56px] md:text-[72px] font-bold text-white mb-6 leading-[1.1] tracking-tight">
+          <h1 className="font-[family-name:var(--font-heading)] text-[56px] md:text-[72px] font-bold text-white mb-6 leading-[1.1] tracking-tight">
             Drive Your <span className="text-[#f2ca50]">Dream</span><br />Today
           </h1>
-          <p className="font-[family-name:var(--font-inter)] text-white/80 text-[16px] md:text-[17px] mb-10 leading-relaxed max-w-lg">
+          <p className="font-[family-name:var(--font-body)] text-white/80 text-[16px] md:text-[17px] mb-10 leading-relaxed max-w-lg">
             Experience the pinnacle of automotive engineering. From high-performance supercars to executive luxury sedans, our curated fleet is ready for your next journey.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-16">
-            <Link href="/cars" className="bg-[#f2ca50] text-[#16130b] font-[family-name:var(--font-inter)] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#ffe088] transition-colors inline-block">
+            <Link href="/cars" className="bg-[#f2ca50] text-[#16130b] font-[family-name:var(--font-body)] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#ffe088] transition-colors inline-block">
               Explore Cars
             </Link>
-            <Link href="/cars" className="bg-transparent border border-white/20 text-white font-[family-name:var(--font-inter)] font-medium text-[15px] px-8 py-3 rounded-lg hover:bg-white/10 transition-colors backdrop-blur-sm inline-block">
+            <Link href="/cars" className="bg-transparent border border-white/20 text-white font-[family-name:var(--font-body)] font-medium text-[15px] px-8 py-3 rounded-lg hover:bg-white/10 transition-colors backdrop-blur-sm inline-block">
               View Fleet
             </Link>
           </div>
@@ -55,20 +55,20 @@ const Hero = () => {
           <div className="flex-1 w-full flex flex-col md:flex-row">
             {/* Pick-up */}
             <div className="flex-1 px-8 py-3 border-b md:border-b-0 md:border-r border-white/10">
-              <div className="text-[#f2ca50] text-[10px] font-bold uppercase tracking-wider mb-1 font-[family-name:var(--font-inter)]">Pick-Up</div>
-              <div className="text-white text-[15px] font-semibold font-[family-name:var(--font-inter)]">Los Angeles, CA</div>
+              <div className="text-[#f2ca50] text-[10px] font-bold uppercase tracking-wider mb-1 font-[family-name:var(--font-body)]">Pick-Up</div>
+              <div className="text-white text-[15px] font-semibold font-[family-name:var(--font-body)]">Los Angeles, CA</div>
             </div>
 
             {/* Drop-off */}
             <div className="flex-1 px-8 py-3 border-b md:border-b-0 md:border-r border-white/10">
-              <div className="text-[#f2ca50] text-[10px] font-bold uppercase tracking-wider mb-1 font-[family-name:var(--font-inter)]">Drop-Off</div>
-              <div className="text-white text-[15px] font-semibold font-[family-name:var(--font-inter)]">Oct 24 - Oct 28</div>
+              <div className="text-[#f2ca50] text-[10px] font-bold uppercase tracking-wider mb-1 font-[family-name:var(--font-body)]">Drop-Off</div>
+              <div className="text-white text-[15px] font-semibold font-[family-name:var(--font-body)]">Oct 24 - Oct 28</div>
             </div>
 
             {/* Car Type */}
             <div className="flex-1 px-8 py-3">
-              <div className="text-[#f2ca50] text-[10px] font-bold uppercase tracking-wider mb-1 font-[family-name:var(--font-inter)]">Car Type</div>
-              <div className="text-white text-[15px] font-semibold font-[family-name:var(--font-inter)]">Luxury Sports</div>
+              <div className="text-[#f2ca50] text-[10px] font-bold uppercase tracking-wider mb-1 font-[family-name:var(--font-body)]">Car Type</div>
+              <div className="text-white text-[15px] font-semibold font-[family-name:var(--font-body)]">Luxury Sports</div>
             </div>
           </div>
 

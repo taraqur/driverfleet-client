@@ -70,10 +70,10 @@ const MyBookings = () => {
     <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20 pt-28">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-montserrat)] text-black dark:text-white mb-2">My Bookings</h1>
-          <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] text-lg">Manage and view your upcoming and past luxury rentals.</p>
+          <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-heading)] text-black dark:text-white mb-2">My Bookings</h1>
+          <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)] text-lg">Manage and view your upcoming and past luxury rentals.</p>
         </div>
-        <Link href="/cars" className="bg-[#f2ca50] text-black px-6 py-3 rounded-full font-semibold font-[family-name:var(--font-inter)] hover:bg-white transition-colors">
+        <Link href="/cars" className="bg-[#f2ca50] text-black px-6 py-3 rounded-full font-semibold font-[family-name:var(--font-body)] hover:bg-white transition-colors">
           Book Another Car
         </Link>
       </motion.div>
@@ -81,9 +81,9 @@ const MyBookings = () => {
       {bookings.length === 0 ? (
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white dark:bg-[#1a1814] border border-black/10 dark:border-white/10 rounded-3xl p-16 text-center shadow-xl">
           <span className="material-symbols-outlined text-6xl text-black/20 dark:text-white/20 mb-4">event_busy</span>
-          <h3 className="text-2xl font-bold text-black dark:text-white mb-2 font-[family-name:var(--font-montserrat)]">No bookings found</h3>
-          <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] mb-6">You haven't made any reservations yet.</p>
-          <Link href="/cars" className="inline-block bg-[#f2ca50] text-black px-8 py-3 rounded-full hover:bg-white transition-colors font-bold font-[family-name:var(--font-inter)]">
+          <h3 className="text-2xl font-bold text-black dark:text-white mb-2 font-[family-name:var(--font-heading)]">No bookings found</h3>
+          <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)] mb-6">You haven't made any reservations yet.</p>
+          <Link href="/cars" className="inline-block bg-[#f2ca50] text-black px-8 py-3 rounded-full hover:bg-white transition-colors font-bold font-[family-name:var(--font-body)]">
             Explore Fleet
           </Link>
         </motion.div>
@@ -100,13 +100,13 @@ const MyBookings = () => {
                 </div>
               </div>
               <div className="p-6 md:p-8 flex-1 flex flex-col">
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4 font-[family-name:var(--font-montserrat)]">{booking.carName}</h3>
+                <h3 className="text-2xl font-bold text-black dark:text-white mb-4 font-[family-name:var(--font-heading)]">{booking.carName}</h3>
                 <div className="space-y-3 mb-8 flex-1">
-                  <div className="flex items-center text-black/70 dark:text-white/70 text-sm font-[family-name:var(--font-inter)]">
+                  <div className="flex items-center text-black/70 dark:text-white/70 text-sm font-[family-name:var(--font-body)]">
                     <span className="material-symbols-outlined text-[20px] mr-3 text-[#f2ca50]">calendar_month</span>
                     {booking.startDate} to {booking.endDate}
                   </div>
-                  <div className="flex items-center text-black/70 dark:text-white/70 text-sm font-[family-name:var(--font-inter)]">
+                  <div className="flex items-center text-black/70 dark:text-white/70 text-sm font-[family-name:var(--font-body)]">
                     <span className="material-symbols-outlined text-[20px] mr-3 text-[#f2ca50]">payments</span>
                     ${booking.totalPrice} Total
                   </div>

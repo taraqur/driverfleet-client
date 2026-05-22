@@ -1,19 +1,19 @@
-import { Montserrat, Inter } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const montserrat = Montserrat({
+const headingFont = Syne({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["400", "600", "700"],
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const inter = Inter({
+const bodyFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "600"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
 });
 
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className={`${montserrat.variable} ${inter.variable} antialiased min-h-screen flex flex-col bg-white dark:bg-[#110e07] text-black dark:text-white transition-colors duration-300`}>
+      <body className={`${headingFont.variable} ${bodyFont.variable} antialiased min-h-screen flex flex-col bg-white dark:bg-[#110e07] text-black dark:text-white transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <Navbar />
           <main className="flex-grow">{children}</main>

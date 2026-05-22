@@ -98,10 +98,10 @@ const PremiumFleet = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div>
-            <h2 className="font-[family-name:var(--font-montserrat)] text-[32px] font-bold text-black dark:text-[#e6e6e6] mb-2 tracking-tight">Premium Fleet</h2>
-            <p className="font-[family-name:var(--font-inter)] text-[15px] text-black/60 dark:text-white/60">Selected high-performance vehicles for the discerning driver.</p>
+            <h2 className="font-[family-name:var(--font-heading)] text-[32px] font-bold text-black dark:text-[#e6e6e6] mb-2 tracking-tight">Premium Fleet</h2>
+            <p className="font-[family-name:var(--font-body)] text-[15px] text-black/60 dark:text-white/60">Selected high-performance vehicles for the discerning driver.</p>
           </div>
-          <Link href="/cars" className="flex items-center gap-2 text-[#f2ca50] font-[family-name:var(--font-inter)] text-[15px] font-bold hover:gap-3 transition-all pb-1">
+          <Link href="/cars" className="flex items-center gap-2 text-[#f2ca50] font-[family-name:var(--font-body)] text-[15px] font-bold hover:gap-3 transition-all pb-1">
             View All <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
           </Link>
         </div>
@@ -129,17 +129,17 @@ const PremiumFleet = () => {
               </div>
               <div className="p-6">
                 <div className="mb-5">
-                  <h3 className="font-[family-name:var(--font-inter)] text-[17px] font-bold text-black dark:text-white mb-1">{car.name}</h3>
-                  <p className="font-[family-name:var(--font-inter)] text-[13px] text-black/50 dark:text-white/50">{car.type}</p>
+                  <h3 className="font-[family-name:var(--font-body)] text-[17px] font-bold text-black dark:text-white mb-1">{car.name}</h3>
+                  <p className="font-[family-name:var(--font-body)] text-[13px] text-black/50 dark:text-white/50">{car.type}</p>
                 </div>
                 <div className="flex gap-3 mb-6">
                   {car.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-[#23201a] text-black/70 dark:text-white/70 text-[12px] font-medium font-[family-name:var(--font-inter)]">
+                    <div key={idx} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-gray-100 dark:bg-[#23201a] text-black/70 dark:text-white/70 text-[12px] font-medium font-[family-name:var(--font-body)]">
                       <span className="material-symbols-outlined text-[16px]">{feature.icon}</span> {feature.text}
                     </div>
                   ))}
                 </div>
-                <Link href="/cars" className="block text-center w-full py-3 bg-gray-100 dark:bg-[#23201a] rounded-lg font-[family-name:var(--font-inter)] text-[14px] font-medium text-black hover:bg-gray-200 dark:text-white dark:hover:bg-[#332f26] transition-colors">
+                <Link href="/cars" className="block text-center w-full py-3 bg-gray-100 dark:bg-[#23201a] rounded-lg font-[family-name:var(--font-body)] text-[14px] font-medium text-black hover:bg-gray-200 dark:text-white dark:hover:bg-[#332f26] transition-colors">
                   View Details
                 </Link>
               </div>

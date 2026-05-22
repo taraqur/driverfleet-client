@@ -67,10 +67,10 @@ export default function RegisterPage() {
       <div className="relative z-10 w-full max-w-[480px] px-6">
         {/* Header */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block font-[family-name:var(--font-montserrat)] text-[40px] font-bold text-[#f2ca50] tracking-tight mb-2">
+          <Link href="/" className="inline-block font-[family-name:var(--font-heading)] text-[40px] font-bold text-[#f2ca50] tracking-tight mb-2">
             DriveFleet
           </Link>
-          <p className="font-[family-name:var(--font-inter)] text-black/70 dark:text-white/70 text-[16px] font-medium">
+          <p className="font-[family-name:var(--font-body)] text-black/70 dark:text-white/70 text-[16px] font-medium">
             Create your premium account
           </p>
         </div>
@@ -82,14 +82,14 @@ export default function RegisterPage() {
 
             {/* Full Name */}
             <div>
-              <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
+              <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">
                 Full Name
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px]"
+                className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-body)] text-[14px]"
                 placeholder="Alexander Pierce"
                 required
               />
@@ -97,14 +97,14 @@ export default function RegisterPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
+              <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">
                 Email Address
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px]"
+                className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-body)] text-[14px]"
                 placeholder="alex@drivefleet.com"
                 required
               />
@@ -112,14 +112,14 @@ export default function RegisterPage() {
 
             {/* Photo URL */}
             <div>
-              <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">
+              <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">
                 Photo URL
               </label>
               <input
                 type="url"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px]"
+                className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-body)] text-[14px]"
                 placeholder="https://image.path/profile.jpg"
               />
             </div>
@@ -127,10 +127,10 @@ export default function RegisterPage() {
             {/* Password */}
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold font-[family-name:var(--font-inter)]">
+                <label className="block text-black/70 dark:text-white/70 text-[10px] uppercase tracking-wider font-bold font-[family-name:var(--font-body)]">
                   Password
                 </label>
-                <span className="text-black/40 dark:text-white/40 text-[9px] uppercase tracking-wider font-[family-name:var(--font-inter)]">
+                <span className="text-black/40 dark:text-white/40 text-[9px] uppercase tracking-wider font-[family-name:var(--font-body)]">
                   Min 8 Chars
                 </span>
               </div>
@@ -139,7 +139,7 @@ export default function RegisterPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-inter)] text-[14px] tracking-widest"
+                  className="w-full bg-[#f8f9fa] dark:bg-[#1c1a17] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-3 rounded-md focus:outline-none focus:border-[#f2ca50]/50 placeholder:text-black/30 dark:placeholder:text-white/30 font-[family-name:var(--font-body)] text-[14px] tracking-widest"
                   placeholder="••••••••"
                   required
                 />
@@ -150,7 +150,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#f2ca50] text-[#16130b] font-bold text-[16px] font-[family-name:var(--font-inter)] py-3.5 rounded-md hover:bg-[#ffe088] transition-colors mt-4 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full bg-[#f2ca50] text-[#16130b] font-bold text-[16px] font-[family-name:var(--font-body)] py-3.5 rounded-md hover:bg-[#ffe088] transition-colors mt-4 flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {loading ? (
                 <>
@@ -168,7 +168,7 @@ export default function RegisterPage() {
           {/* Divider */}
           <div className="flex items-center my-8">
             <div className="flex-1 h-[1px] bg-black/5 dark:bg-white/5"></div>
-            <span className="px-4 text-black/50 dark:text-white/50 text-[10px] font-bold uppercase tracking-wider font-[family-name:var(--font-inter)]">OR CONTINUE WITH</span>
+            <span className="px-4 text-black/50 dark:text-white/50 text-[10px] font-bold uppercase tracking-wider font-[family-name:var(--font-body)]">OR CONTINUE WITH</span>
             <div className="flex-1 h-[1px] bg-black/5 dark:bg-white/5"></div>
           </div>
 
@@ -176,7 +176,7 @@ export default function RegisterPage() {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="w-full bg-white dark:bg-[#1e1c18] border border-black/10 dark:border-white/10 text-black dark:text-white font-[family-name:var(--font-inter)] font-medium text-[14px] py-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center gap-3 shadow-sm dark:shadow-none"
+            className="w-full bg-white dark:bg-[#1e1c18] border border-black/10 dark:border-white/10 text-black dark:text-white font-[family-name:var(--font-body)] font-medium text-[14px] py-3 rounded-md hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center gap-3 shadow-sm dark:shadow-none"
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4">
               <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -188,14 +188,14 @@ export default function RegisterPage() {
           </button>
 
           {/* Bottom Link */}
-          <p className="text-center text-black/60 dark:text-white/60 text-[14px] font-[family-name:var(--font-inter)] mt-8">
+          <p className="text-center text-black/60 dark:text-white/60 text-[14px] font-[family-name:var(--font-body)] mt-8">
             Already have an account? <Link href="/login" className="text-[#f2ca50] font-bold hover:underline">Login here</Link>
           </p>
 
         </div>
 
         {/* Small footer below form */}
-        <p className="text-center text-black/30 dark:text-white/30 text-[13px] font-[family-name:var(--font-inter)] mt-8 pb-8">
+        <p className="text-center text-black/30 dark:text-white/30 text-[13px] font-[family-name:var(--font-body)] mt-8 pb-8">
           © 2024 DriveFleet Premium. All rights reserved.
         </p>
       </div>

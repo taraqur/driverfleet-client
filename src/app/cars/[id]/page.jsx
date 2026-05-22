@@ -125,8 +125,8 @@ const CarDetails = () => {
   if (!car) {
     return (
       <div className="min-h-screen bg-white dark:bg-[#110e07] flex flex-col items-center justify-center pt-20 text-black dark:text-white transition-colors duration-300">
-        <h1 className="text-3xl font-bold font-[family-name:var(--font-montserrat)] mb-4">Car Not Found</h1>
-        <Link href="/cars" className="text-[#f2ca50] hover:underline font-[family-name:var(--font-inter)]">Return to Explore</Link>
+        <h1 className="text-3xl font-bold font-[family-name:var(--font-heading)] mb-4">Car Not Found</h1>
+        <Link href="/cars" className="text-[#f2ca50] hover:underline font-[family-name:var(--font-body)]">Return to Explore</Link>
       </div>
     );
   }
@@ -154,10 +154,10 @@ const CarDetails = () => {
           <div className="absolute bottom-0 left-0 w-full p-6 lg:p-12 flex gap-4">
             {/* Speed Box */}
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white/90 dark:bg-[#1a1814]/90 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-xl p-5 w-48 shadow-lg">
-              <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-[0.2em] mb-1 font-[family-name:var(--font-inter)] uppercase">
+              <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-[0.2em] mb-1 font-[family-name:var(--font-body)] uppercase">
                 Max Speed
               </div>
-              <div className="text-black dark:text-[#f2ca50] font-bold font-[family-name:var(--font-montserrat)] flex items-baseline gap-1">
+              <div className="text-black dark:text-[#f2ca50] font-bold font-[family-name:var(--font-heading)] flex items-baseline gap-1">
                 <span className="text-4xl">{mockMaxSpeed}</span>
                 <span className="text-sm">mph</span>
               </div>
@@ -165,10 +165,10 @@ const CarDetails = () => {
 
             {/* Horsepower Box */}
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="bg-white/90 dark:bg-[#1a1814]/90 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-xl p-5 w-48 shadow-lg">
-              <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-[0.2em] mb-1 font-[family-name:var(--font-inter)] uppercase">
+              <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-[0.2em] mb-1 font-[family-name:var(--font-body)] uppercase">
                 Horsepower
               </div>
-              <div className="text-black dark:text-[#f2ca50] font-bold font-[family-name:var(--font-montserrat)] flex items-baseline gap-1">
+              <div className="text-black dark:text-[#f2ca50] font-bold font-[family-name:var(--font-heading)] flex items-baseline gap-1">
                 <span className="text-4xl">{mockHorsepower}</span>
                 <span className="text-sm">hp</span>
               </div>
@@ -184,25 +184,25 @@ const CarDetails = () => {
                 {car.availability || "Available"}
               </div>
               <div className="text-right">
-                <div className="text-black dark:text-[#f2ca50] font-bold font-[family-name:var(--font-montserrat)] text-4xl leading-none">
+                <div className="text-black dark:text-[#f2ca50] font-bold font-[family-name:var(--font-heading)] text-4xl leading-none">
                   ${car.price}
                 </div>
-                <div className="text-black/50 dark:text-white/50 text-[12px] font-[family-name:var(--font-inter)]">
+                <div className="text-black/50 dark:text-white/50 text-[12px] font-[family-name:var(--font-body)]">
                   per day
                 </div>
               </div>
             </div>
 
-            <h1 className="text-black dark:text-white font-bold font-[family-name:var(--font-montserrat)] text-4xl mb-4 leading-tight">
+            <h1 className="text-black dark:text-white font-bold font-[family-name:var(--font-heading)] text-4xl mb-4 leading-tight">
               {car.name}
             </h1>
 
-            <div className="flex items-center gap-2 text-black/60 dark:text-white/60 text-sm font-[family-name:var(--font-inter)] mb-8">
+            <div className="flex items-center gap-2 text-black/60 dark:text-white/60 text-sm font-[family-name:var(--font-body)] mb-8">
               <span className="material-symbols-outlined text-[#f2ca50] text-[18px]">location_on</span>
               {car.location || "Beverly Hills, Los Angeles"}
             </div>
 
-            <p className="text-black/80 dark:text-white/80 font-[family-name:var(--font-inter)] text-[15px] leading-relaxed mb-10">
+            <p className="text-black/80 dark:text-white/80 font-[family-name:var(--font-body)] text-[15px] leading-relaxed mb-10">
               {car.description || `Experience the pinnacle of automotive engineering with the ${car.name}. This ${car.type} provides unparalleled performance for the open road, delivering an intoxicating experience that redefines premium mobility.`}
             </p>
 
@@ -212,8 +212,8 @@ const CarDetails = () => {
                   <span className="material-symbols-outlined text-black/70 dark:text-white/70">local_gas_station</span>
                 </div>
                 <div>
-                  <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-wider font-[family-name:var(--font-inter)] uppercase">Fuel</div>
-                  <div className="text-black dark:text-white font-medium font-[family-name:var(--font-inter)]">Premium</div>
+                  <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-wider font-[family-name:var(--font-body)] uppercase">Fuel</div>
+                  <div className="text-black dark:text-white font-medium font-[family-name:var(--font-body)]">Premium</div>
                 </div>
               </div>
 
@@ -222,8 +222,8 @@ const CarDetails = () => {
                   <span className="material-symbols-outlined text-black/70 dark:text-white/70">chair</span>
                 </div>
                 <div>
-                  <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-wider font-[family-name:var(--font-inter)] uppercase">Seats</div>
-                  <div className="text-black dark:text-white font-medium font-[family-name:var(--font-inter)]">{car.capacity} Adults</div>
+                  <div className="text-black/50 dark:text-white/50 text-[10px] font-bold tracking-wider font-[family-name:var(--font-body)] uppercase">Seats</div>
+                  <div className="text-black dark:text-white font-medium font-[family-name:var(--font-body)]">{car.capacity} Adults</div>
                 </div>
               </div>
             </div>
@@ -234,7 +234,7 @@ const CarDetails = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
             onClick={() => setIsModalOpen(true)}
-            className="w-full bg-[#f2ca50] text-black py-4 rounded-lg font-bold font-[family-name:var(--font-inter)] tracking-wide hover:bg-black/10 dark:hover:bg-white transition-colors uppercase text-sm mt-auto"
+            className="w-full bg-[#f2ca50] text-black py-4 rounded-lg font-bold font-[family-name:var(--font-body)] tracking-wide hover:bg-black/10 dark:hover:bg-white transition-colors uppercase text-sm mt-auto"
           >
             Book This Vehicle
           </motion.button>
@@ -244,7 +244,7 @@ const CarDetails = () => {
       {/* Similar Luxury Rentals */}
       {similarCars.length > 0 && (
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-24">
-          <h2 className="text-black dark:text-white font-bold font-[family-name:var(--font-montserrat)] text-3xl mb-10">
+          <h2 className="text-black dark:text-white font-bold font-[family-name:var(--font-heading)] text-3xl mb-10">
             Similar Luxury Rentals
           </h2>
 
@@ -257,19 +257,19 @@ const CarDetails = () => {
                     src={similarCar.imageUrl}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute bottom-4 right-4 text-black dark:text-[#f2ca50] text-[15px] font-bold font-[family-name:var(--font-inter)] drop-shadow-md">
+                  <div className="absolute bottom-4 right-4 text-black dark:text-[#f2ca50] text-[15px] font-bold font-[family-name:var(--font-body)] drop-shadow-md">
                     ${similarCar.price}/day
                   </div>
                 </div>
                 <div className="p-5 flex justify-between items-center">
-                  <h3 className="font-[family-name:var(--font-inter)] text-[16px] font-bold text-black dark:text-white">
+                  <h3 className="font-[family-name:var(--font-body)] text-[16px] font-bold text-black dark:text-white">
                     {similarCar.name}
                   </h3>
                   <Link
                     href={`/cars/${similarCar._id}`}
                     className="flex gap-2"
                   >
-                    <div className="px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-black/70 dark:text-white/70 text-[11px] font-medium font-[family-name:var(--font-inter)] hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+                    <div className="px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-black/70 dark:text-white/70 text-[11px] font-medium font-[family-name:var(--font-body)] hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                       Automatic
                     </div>
                   </Link>
@@ -291,12 +291,12 @@ const CarDetails = () => {
               <span className="material-symbols-outlined">close</span>
             </button>
 
-            <h3 className="text-2xl font-bold font-[family-name:var(--font-montserrat)] text-black dark:text-white mb-2">Book {car.name}</h3>
-            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] text-sm mb-6">Select your rental dates to proceed.</p>
+            <h3 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-black dark:text-white mb-2">Book {car.name}</h3>
+            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)] text-sm mb-6">Select your rental dates to proceed.</p>
 
             <form onSubmit={handleBooking} className="space-y-4">
               <div>
-                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Start Date</label>
+                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Start Date</label>
                 <input
                   type="date"
                   value={startDate}
@@ -308,7 +308,7 @@ const CarDetails = () => {
               </div>
 
               <div>
-                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">End Date</label>
+                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">End Date</label>
                 <input
                   type="date"
                   value={endDate}
@@ -321,8 +321,8 @@ const CarDetails = () => {
 
               {startDate && endDate && (
                 <div className="pt-4 pb-2 border-t border-black/10 dark:border-white/10 mt-6 flex justify-between items-center">
-                  <span className="text-black/70 dark:text-white/70 font-[family-name:var(--font-inter)] text-sm">Total Estimated:</span>
-                  <span className="text-[#f2ca50] font-bold font-[family-name:var(--font-montserrat)] text-xl">
+                  <span className="text-black/70 dark:text-white/70 font-[family-name:var(--font-body)] text-sm">Total Estimated:</span>
+                  <span className="text-[#f2ca50] font-bold font-[family-name:var(--font-heading)] text-xl">
                     ${(Math.ceil(Math.abs(new Date(endDate) - new Date(startDate)) / (1000 * 60 * 60 * 24)) || 1) * car.price}
                   </span>
                 </div>
@@ -331,7 +331,7 @@ const CarDetails = () => {
               <button
                 type="submit"
                 disabled={bookingLoading}
-                className="w-full bg-[#f2ca50] text-black py-3 rounded-lg font-bold font-[family-name:var(--font-inter)] hover:bg-[#ffe088] transition-colors mt-4 disabled:opacity-50"
+                className="w-full bg-[#f2ca50] text-black py-3 rounded-lg font-bold font-[family-name:var(--font-body)] hover:bg-[#ffe088] transition-colors mt-4 disabled:opacity-50"
               >
                 {bookingLoading ? "Processing..." : "Confirm Booking"}
               </button>

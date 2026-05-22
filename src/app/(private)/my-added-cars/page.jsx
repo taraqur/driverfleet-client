@@ -129,10 +129,10 @@ const MyAddedCars = () => {
     <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 pt-24 min-h-screen">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-montserrat)] text-black dark:text-white mb-2">My Added Cars</h1>
-          <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] text-lg">Manage the vehicles you have listed on DriveFleet.</p>
+          <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-heading)] text-black dark:text-white mb-2">My Added Cars</h1>
+          <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)] text-lg">Manage the vehicles you have listed on DriveFleet.</p>
         </div>
-        <Link href="/add-car" className="bg-[#f2ca50] text-black px-6 py-3 rounded-full font-semibold font-[family-name:var(--font-inter)] hover:bg-white transition-colors flex items-center gap-2">
+        <Link href="/add-car" className="bg-[#f2ca50] text-black px-6 py-3 rounded-full font-semibold font-[family-name:var(--font-body)] hover:bg-white transition-colors flex items-center gap-2">
           <span className="material-symbols-outlined">add</span>
           Add New Car
         </Link>
@@ -141,9 +141,9 @@ const MyAddedCars = () => {
       {myCars.length === 0 ? (
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white dark:bg-[#1a1814] border border-black/10 dark:border-white/10 rounded-3xl p-16 text-center shadow-2xl">
           <span className="material-symbols-outlined text-7xl text-[#f2ca50]/50 mb-6">directions_car</span>
-          <h2 className="text-3xl font-bold text-black dark:text-white mb-4 font-[family-name:var(--font-montserrat)]">No Cars Listed Yet</h2>
-          <p className="text-black/60 dark:text-white/60 mb-8 font-[family-name:var(--font-inter)] text-lg max-w-md mx-auto">Start earning by listing your premium vehicle on our exclusive platform.</p>
-          <Link href="/add-car" className="inline-block bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-black dark:text-white px-8 py-3 rounded-full transition-colors border border-black/10 dark:border-white/10 font-medium font-[family-name:var(--font-inter)]">
+          <h2 className="text-3xl font-bold text-black dark:text-white mb-4 font-[family-name:var(--font-heading)]">No Cars Listed Yet</h2>
+          <p className="text-black/60 dark:text-white/60 mb-8 font-[family-name:var(--font-body)] text-lg max-w-md mx-auto">Start earning by listing your premium vehicle on our exclusive platform.</p>
+          <Link href="/add-car" className="inline-block bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-black dark:text-white px-8 py-3 rounded-full transition-colors border border-black/10 dark:border-white/10 font-medium font-[family-name:var(--font-body)]">
             List Your Car
           </Link>
         </motion.div>
@@ -160,8 +160,8 @@ const MyAddedCars = () => {
                 </div>
               </div>
               <div className="p-6 md:p-8">
-                <h3 className="text-2xl font-bold text-black dark:text-white mb-4 font-[family-name:var(--font-montserrat)]">{car.name}</h3>
-                <div className="flex justify-between items-center mb-8 text-sm font-[family-name:var(--font-inter)] text-black/70 dark:text-white/70 bg-black/5 dark:bg-black/20 p-4 rounded-xl border border-black/5 dark:border-white/5">
+                <h3 className="text-2xl font-bold text-black dark:text-white mb-4 font-[family-name:var(--font-heading)]">{car.name}</h3>
+                <div className="flex justify-between items-center mb-8 text-sm font-[family-name:var(--font-body)] text-black/70 dark:text-white/70 bg-black/5 dark:bg-black/20 p-4 rounded-xl border border-black/5 dark:border-white/5">
                   <div className="flex flex-col">
                     <span className="text-xs text-black/40 dark:text-white/40 mb-1 tracking-wider uppercase font-bold">Daily Rate</span>
                     <span className="font-bold text-black dark:text-[#f2ca50] text-lg">${car.price}</span>
@@ -175,14 +175,14 @@ const MyAddedCars = () => {
                 <div className="flex gap-4">
                   <button
                     onClick={() => setCarToEdit(car)}
-                    className="flex-1 bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-black dark:text-white py-3 rounded-xl text-sm font-bold tracking-wide transition-colors border border-black/10 dark:border-white/5 flex items-center justify-center gap-2 uppercase font-[family-name:var(--font-inter)]"
+                    className="flex-1 bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-black dark:text-white py-3 rounded-xl text-sm font-bold tracking-wide transition-colors border border-black/10 dark:border-white/5 flex items-center justify-center gap-2 uppercase font-[family-name:var(--font-body)]"
                   >
                     <span className="material-symbols-outlined text-[18px]">edit</span>
                     Update
                   </button>
                   <button
                     onClick={() => setCarToDelete(car)}
-                    className="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-400 py-3 rounded-xl text-sm font-bold tracking-wide transition-colors border border-red-500/20 flex items-center justify-center gap-2 uppercase font-[family-name:var(--font-inter)]"
+                    className="flex-1 bg-red-500/10 hover:bg-red-500/20 text-red-400 py-3 rounded-xl text-sm font-bold tracking-wide transition-colors border border-red-500/20 flex items-center justify-center gap-2 uppercase font-[family-name:var(--font-body)]"
                   >
                     <span className="material-symbols-outlined text-[18px]">delete</span>
                     Delete
@@ -201,21 +201,21 @@ const MyAddedCars = () => {
             <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-6">
               <span className="material-symbols-outlined text-red-500 text-3xl">warning</span>
             </div>
-            <h3 className="text-2xl font-bold font-[family-name:var(--font-montserrat)] text-black dark:text-white mb-2">Delete Vehicle?</h3>
-            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] text-sm mb-8">
+            <h3 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-black dark:text-white mb-2">Delete Vehicle?</h3>
+            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)] text-sm mb-8">
               Are you sure you want to permanently delete <strong className="text-black dark:text-white">{carToDelete.name}</strong> from your fleet? This action cannot be undone.
             </p>
             <div className="flex gap-4">
               <button
                 onClick={() => setCarToDelete(null)}
-                className="flex-1 bg-black/5 dark:bg-white/10 text-black dark:text-white py-3 rounded-xl font-bold font-[family-name:var(--font-inter)] hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
+                className="flex-1 bg-black/5 dark:bg-white/10 text-black dark:text-white py-3 rounded-xl font-bold font-[family-name:var(--font-body)] hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
                 disabled={isDeleting}
               >
                 Cancel
               </button>
               <button
                 onClick={handleDeleteConfirm}
-                className="flex-1 bg-red-500 text-white py-3 rounded-xl font-bold font-[family-name:var(--font-inter)] hover:bg-red-600 transition-colors flex items-center justify-center gap-2"
+                className="flex-1 bg-red-500 text-white py-3 rounded-xl font-bold font-[family-name:var(--font-body)] hover:bg-red-600 transition-colors flex items-center justify-center gap-2"
                 disabled={isDeleting}
               >
                 {isDeleting ? 'Deleting...' : 'Delete'}
@@ -237,15 +237,15 @@ const MyAddedCars = () => {
               <span className="material-symbols-outlined">close</span>
             </button>
 
-            <h3 className="text-2xl font-bold font-[family-name:var(--font-montserrat)] text-black dark:text-white mb-2">Update Vehicle</h3>
-            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-inter)] text-sm mb-8">Update the details for {carToEdit.name}.</p>
+            <h3 className="text-2xl font-bold font-[family-name:var(--font-heading)] text-black dark:text-white mb-2">Update Vehicle</h3>
+            <p className="text-black/60 dark:text-white/60 font-[family-name:var(--font-body)] text-sm mb-8">Update the details for {carToEdit.name}.</p>
 
             <form onSubmit={handleEditSubmit} className="space-y-6">
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Price */}
                 <div>
-                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Daily Rent Price ($)</label>
+                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Daily Rent Price ($)</label>
                   <input
                     type="number"
                     name="price"
@@ -258,7 +258,7 @@ const MyAddedCars = () => {
 
                 {/* Availability */}
                 <div>
-                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Availability Status</label>
+                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Availability Status</label>
                   <select
                     name="availability"
                     value={carToEdit.availability || 'Available'}
@@ -272,7 +272,7 @@ const MyAddedCars = () => {
 
                 {/* Car Type */}
                 <div>
-                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Car Type</label>
+                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Car Type</label>
                   <select
                     name="type"
                     value={carToEdit.type}
@@ -285,7 +285,7 @@ const MyAddedCars = () => {
 
                 {/* Location */}
                 <div>
-                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Location</label>
+                  <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Location</label>
                   <input
                     type="text"
                     name="location"
@@ -299,7 +299,7 @@ const MyAddedCars = () => {
 
               {/* Image URL */}
               <div>
-                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Image URL</label>
+                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Image URL</label>
                 <input
                   type="url"
                   name="imageUrl"
@@ -312,7 +312,7 @@ const MyAddedCars = () => {
 
               {/* Description */}
               <div>
-                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-inter)]">Description</label>
+                <label className="block text-black/70 dark:text-white/70 text-[11px] uppercase tracking-wider font-bold mb-2 font-[family-name:var(--font-body)]">Description</label>
                 <textarea
                   name="description"
                   value={carToEdit.description}
@@ -327,14 +327,14 @@ const MyAddedCars = () => {
                 <button
                   type="button"
                   onClick={() => setCarToEdit(null)}
-                  className="bg-black/5 dark:bg-white/5 text-black dark:text-white px-6 py-3 rounded-lg font-bold font-[family-name:var(--font-inter)] hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                  className="bg-black/5 dark:bg-white/5 text-black dark:text-white px-6 py-3 rounded-lg font-bold font-[family-name:var(--font-body)] hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
                   disabled={isUpdating}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-[#f2ca50] text-black px-8 py-3 rounded-lg font-bold font-[family-name:var(--font-inter)] hover:bg-white transition-colors"
+                  className="bg-[#f2ca50] text-black px-8 py-3 rounded-lg font-bold font-[family-name:var(--font-body)] hover:bg-white transition-colors"
                   disabled={isUpdating}
                 >
                   {isUpdating ? 'Saving...' : 'Save Changes'}
