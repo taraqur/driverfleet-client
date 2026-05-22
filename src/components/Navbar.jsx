@@ -106,9 +106,15 @@ const Navbar = () => {
               <div className="w-6 h-6 border-2 border-white/20 border-t-[#f2ca50] rounded-full animate-spin"></div>
             ) : user ? (
               <div className="relative group">
-                <div className="flex items-center gap-2 px-5 py-2 rounded-full border border-[#f2ca50]/50 hover:bg-[#f2ca50]/10 transition-all cursor-pointer">
-                  <span className="material-symbols-outlined text-[#f2ca50] text-[20px]">account_circle</span>
-                  <span className="font-[family-name:var(--font-inter)] text-[15px] font-medium text-[#f2ca50]">Profile</span>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#f2ca50]/50 hover:bg-[#f2ca50]/10 transition-all cursor-pointer">
+                  {user?.image ? (
+                    <img src={user.image} alt={user.name || "Profile"} className="w-7 h-7 rounded-full object-cover border border-[#f2ca50]/50" />
+                  ) : (
+                    <span className="material-symbols-outlined text-[#f2ca50] text-[24px]">account_circle</span>
+                  )}
+                  <span className="font-[family-name:var(--font-inter)] text-[14px] font-medium text-[#f2ca50] truncate max-w-[100px] mr-1">
+                    {user?.name?.split(' ')[0] || "Profile"}
+                  </span>
                 </div>
 
                 {/* Dropdown Menu */}

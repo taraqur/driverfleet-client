@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Hero = () => {
   return (
@@ -10,7 +11,7 @@ const Hero = () => {
         <img
           alt="Porsche 911"
           className="w-full h-full object-cover opacity-80"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDMxKGktfUETX4bnp4FPhlVMdrklsFcluIjpBpwlJ1zqKuAcUVwGqwzIl27BpHMzTKdLNH_KTj7HggS-84D1hcEGnVQbaswhy38SpIrgyciuRy5Ovshb36oJT7YBHpUcOSWpsyjBHCk1XpX6Y02HcE_dACd3vc0BO9oNoqqSqtiHshW40kPBx1j6N_eWALkCrrDMCVPTCNGPSVj8CWtx2Bx2oXt0Huy15cHZTmVH9C-09SESzm80Ri3ehZLABaioxjDhFKYGCsizo"
+          src="/luxury_hero_car.png"
         />
         {/* Dark gradient from left */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#16130b] via-[#16130b]/80 to-transparent"></div>
@@ -33,12 +34,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 mb-16">
-            <button className="bg-[#f2ca50] text-[#16130b] font-[family-name:var(--font-inter)] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#ffe088] transition-colors">
+            <Link href="/cars" className="bg-[#f2ca50] text-[#16130b] font-[family-name:var(--font-inter)] font-semibold text-[15px] px-8 py-3 rounded-lg hover:bg-[#ffe088] transition-colors inline-block">
               Explore Cars
-            </button>
-            <button className="bg-transparent border border-white/20 text-white font-[family-name:var(--font-inter)] font-medium text-[15px] px-8 py-3 rounded-lg hover:bg-white/10 transition-colors backdrop-blur-sm">
+            </Link>
+            <Link href="/cars" className="bg-transparent border border-white/20 text-white font-[family-name:var(--font-inter)] font-medium text-[15px] px-8 py-3 rounded-lg hover:bg-white/10 transition-colors backdrop-blur-sm inline-block">
               View Fleet
-            </button>
+            </Link>
           </div>
         </motion.div>
 
