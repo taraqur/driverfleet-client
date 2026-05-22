@@ -9,14 +9,16 @@ const Hero = () => {
       {/* Background Image & Gradients */}
       <div className="absolute inset-0 z-0">
         <img
-          alt="Porsche 911"
-          className="w-full h-full object-cover opacity-80"
+          alt="Luxury Car"
+          className="w-full h-full object-cover opacity-100 contrast-[1.15] saturate-[1.3]"
           src="/luxury_hero_car.png"
         />
-        {/* Dark gradient from left */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#16130b] via-[#16130b]/80 to-transparent"></div>
+        {/* Unique Color Grading Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#f2ca50]/10 via-transparent to-[#16130b]/20 mix-blend-overlay"></div>
+        {/* Dark gradient from left to ensure text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#110e07] via-[#110e07]/50 to-transparent"></div>
         {/* Dark gradient from bottom to blend with next section */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#16130b] via-[#16130b]/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#110e07] via-[#110e07]/40 to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pb-20">
